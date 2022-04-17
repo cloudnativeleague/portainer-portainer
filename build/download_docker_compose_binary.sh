@@ -12,7 +12,8 @@ function download_binary() {
     local BINARY_VERSION=$3
     
     if [ "${PLATFORM}" == 'linux' ] && [ "${ARCH}" == 'amd64' ]; then
-        wget -O "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
+        # wget -O "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
+        curl -x socks5h://127.0.0.1:1080 -L -o "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
         chmod +x "dist/docker-compose"
         return
     fi

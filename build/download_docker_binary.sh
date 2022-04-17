@@ -15,7 +15,8 @@ if [ "${PLATFORM}" == 'win' ]; then
   mv "${DOWNLOAD_FOLDER}/docker/docker.exe" dist/
   mv ${DOWNLOAD_FOLDER}/docker/*.dll dist/
 else
-  wget -O "${DOWNLOAD_FOLDER}/docker-binaries.tgz" "https://download.docker.com/${PLATFORM}/static/stable/${ARCH}/docker-${DOCKER_VERSION}.tgz"
+  # wget -O "${DOWNLOAD_FOLDER}/docker-binaries.tgz" "https://download.docker.com/${PLATFORM}/static/stable/${ARCH}/docker-${DOCKER_VERSION}.tgz"
+  wget -O "${DOWNLOAD_FOLDER}/docker-binaries.tgz" "https://mirrors.aliyun.com/docker-ce/${PLATFORM}/static/stable/${ARCH}/docker-${DOCKER_VERSION}.tgz"
   tar -xf "${DOWNLOAD_FOLDER}/docker-binaries.tgz" -C "${DOWNLOAD_FOLDER}"
   mv "${DOWNLOAD_FOLDER}/docker/docker" dist/
 fi

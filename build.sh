@@ -40,9 +40,13 @@ if [[ $# -ne 1 ]] ; then
 else
   VERSION="$1"
   if [ `echo "$@" | cut -c1-4` == 'echo' ]; then
+    echo "build special"
+    echo $@
     bash -c "$@";
   else
-    build_all 'linux-amd64 linux-arm linux-arm64 linux-ppc64le linux-s390x darwin-amd64 windows-amd64'
+    echo "build all"
+    # build_all 'linux-amd64 linux-arm linux-arm64 linux-ppc64le linux-s390x darwin-amd64 windows-amd64'
+    build_all 'linux-amd64'
     exit 0
   fi
 fi
