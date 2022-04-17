@@ -16,7 +16,7 @@ angular.module('portainer.azure').factory('ProviderService', [
           deferred.resolve(provider);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve provider', err: err });
+          deferred.reject({ msg: '无法检索供应方', err: err });
         });
 
       return deferred.promise;

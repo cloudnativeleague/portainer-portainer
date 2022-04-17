@@ -21,7 +21,7 @@ class ContainerInstanceDetailsController {
       this.container = await this.ContainerGroupService.containerGroup(subscriptionId, resourceGroupId, containerGroupId);
       this.resourceGroup = await this.ResourceGroupService.resourceGroup(subscriptionId, resourceGroupId);
     } catch (err) {
-      this.Notifications.error('Failure', err, 'Unable to retrieve container instance details');
+      this.Notifications.error('失败', err, '无法检索容器实例详细信息');
     }
     this.state.loading = false;
   }

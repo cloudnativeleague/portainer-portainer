@@ -18,7 +18,7 @@ angular.module('portainer.azure').factory('ResourceGroupService', [
           deferred.resolve(resourceGroups);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve resource groups', err: err });
+          deferred.reject({ msg: '无法检索资源组', err: err });
         });
 
       return deferred.promise;

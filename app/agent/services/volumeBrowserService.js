@@ -45,7 +45,7 @@ function VolumeBrowserServiceFactory(StateManager, Browse, BrowseVersion1, API_E
   function upload(endpointId, path, file, volumeId, onProgress) {
     const agentVersion = StateManager.getAgentApiVersion();
     if (agentVersion < 2) {
-      throw new Error('upload is not supported on this agent version');
+      throw new Error('该代理版本不支持上传');
     }
 
     const url = `${API_ENDPOINT_ENDPOINTS}/${endpointId}/docker/v${agentVersion}/browse/put?volumeID=${volumeId}`;

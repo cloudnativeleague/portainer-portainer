@@ -18,7 +18,7 @@ angular.module('portainer.azure').factory('ContainerGroupService', [
           deferred.resolve(containerGroups);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve container groups', err: err });
+          deferred.reject({ msg: '无法检索容器组', err: err });
         });
 
       return deferred.promise;

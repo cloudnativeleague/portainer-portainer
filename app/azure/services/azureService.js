@@ -61,7 +61,7 @@ angular.module('portainer.azure').factory('AzureService', [
           deferred.resolve(resources);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve resources', err: err });
+          deferred.reject({ msg: '无法检索资源', err: err });
         });
 
       return deferred.promise;

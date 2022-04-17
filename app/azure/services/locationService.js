@@ -18,7 +18,7 @@ angular.module('portainer.azure').factory('LocationService', [
           deferred.resolve(locations);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve locations', err: err });
+          deferred.reject({ msg: '无法检索位置', err: err });
         });
 
       return deferred.promise;

@@ -18,7 +18,7 @@ angular.module('portainer.azure').factory('SubscriptionService', [
           deferred.resolve(subscriptions);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve subscriptions', err: err });
+          deferred.reject({ msg: '无法检索订阅', err: err });
         });
 
       return deferred.promise;

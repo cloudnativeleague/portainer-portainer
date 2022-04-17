@@ -81,11 +81,11 @@ export function trackEvent(action: string, properties: TrackEventProps) {
   }
 
   if (!category) {
-    throw new Error('missing category');
+    throw new Error('丢失的目录');
   }
 
   if (!categories.includes(category)) {
-    throw new Error('unsupported category');
+    throw new Error('不支持的目录');
   }
 
   let metadataString = '';

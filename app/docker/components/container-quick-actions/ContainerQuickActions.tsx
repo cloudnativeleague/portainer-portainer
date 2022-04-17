@@ -45,7 +45,7 @@ export function ContainerQuickActions({
           <Link
             to="docker.containers.container.logs"
             params={{ id: containerId, nodeName }}
-            title="Logs"
+            title="日志"
           >
             <i className="fa fa-file-alt space-right" aria-hidden="true" />
           </Link>
@@ -57,7 +57,7 @@ export function ContainerQuickActions({
           <Link
             to="docker.containers.container.inspect"
             params={{ id: containerId, nodeName }}
-            title="Inspect"
+            title="检查"
           >
             <i className="fa fa-info-circle space-right" aria-hidden="true" />
           </Link>
@@ -69,7 +69,7 @@ export function ContainerQuickActions({
           <Link
             to="docker.containers.container.stats"
             params={{ id: containerId, nodeName }}
-            title="Stats"
+            title="统计信息"
           >
             <i className="fa fa-chart-area space-right" aria-hidden="true" />
           </Link>
@@ -81,7 +81,7 @@ export function ContainerQuickActions({
           <Link
             to="docker.containers.container.exec"
             params={{ id: containerId, nodeName }}
-            title="Exec Console"
+            title="执行控制台"
           >
             <i className="fa fa-terminal space-right" aria-hidden="true" />
           </Link>
@@ -93,7 +93,7 @@ export function ContainerQuickActions({
           <Link
             to="docker.containers.container.attach"
             params={{ id: containerId, nodeName }}
-            title="Attach Console"
+            title="附件控制台"
           >
             <i className="fa fa-plug space-right" aria-hidden="true" />
           </Link>
@@ -116,7 +116,7 @@ function TaskQuickActions({ taskId, state }: TaskProps) {
           <Link
             to="docker.tasks.task.logs"
             params={{ id: taskId }}
-            title="Logs"
+            title="日志"
           >
             <i className="fa fa-file-alt space-right" aria-hidden="true" />
           </Link>
@@ -125,7 +125,7 @@ function TaskQuickActions({ taskId, state }: TaskProps) {
 
       {state.showQuickActionInspect && (
         <Authorized authorizations="DockerTaskInspect">
-          <Link to="docker.tasks.task" params={{ id: taskId }} title="Inspect">
+          <Link to="docker.tasks.task" params={{ id: taskId }} title="检查">
             <i className="fa fa-info-circle space-right" aria-hidden="true" />
           </Link>
         </Authorized>

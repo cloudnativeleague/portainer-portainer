@@ -47,11 +47,11 @@ angular.module('portainer.azure').controller('AzureCreateContainerInstanceContro
       AzureService.createContainerGroup(model, subscriptionId, resourceGroupName)
         .then(applyResourceControl)
         .then(() => {
-          Notifications.success('Container successfully created', model.Name);
+          Notifications.success('容器创建成功', model.Name);
           $state.go('azure.containerinstances');
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to create container');
+          Notifications.error('失败', err, '无法创建容器');
         })
         .finally(function final() {
           $scope.state.actionInProgress = false;
@@ -68,7 +68,7 @@ angular.module('portainer.azure').controller('AzureCreateContainerInstanceContro
 
     function validateForm(model) {
       if (!model.Ports || !model.Ports.length || model.Ports.every((port) => !port.host || !port.container)) {
-        return 'At least one port binding is required';
+        return '至少需要绑定一个端口';
       }
 
       const error = FormValidator.validateAccessControl(model.AccessControlData, Authentication.isAdmin());
@@ -113,7 +113,7 @@ angular.module('portainer.azure').controller('AzureCreateContainerInstanceContro
           updateResourceGroupsAndLocations(selectedSubscription, resourceGroups, containerInstancesProviders);
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve Azure resources');
+          Notifications.error('失败', err, '无法检索Azure资源');
         });
     }
 
