@@ -5,7 +5,7 @@ import { useEnvironment } from '@/portainer/environments/useEnvironment';
 import type { DockerContainer, Port } from '@/docker/containers/types';
 
 export const ports: Column<DockerContainer> = {
-  Header: 'Published Ports',
+  Header: '发布端口',
   accessor: 'Ports',
   id: 'ports',
   Cell: PortsCell,

@@ -16,7 +16,7 @@ angular.module('portainer.docker').factory('SwarmService', [
           deferred.resolve(swarm);
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to retrieve Swarm details', err: err });
+          deferred.reject({ msg: '无法检索Swarm服务', err: err });
         });
 
       return deferred.promise;

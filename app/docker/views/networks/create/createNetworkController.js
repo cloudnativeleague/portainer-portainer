@@ -227,7 +227,7 @@ angular.module('portainer.docker').controller('CreateNetworkController', [
           return ResourceControlService.applyResourceControl(userId, accessControlData, resourceControl);
         })
         .then(function success() {
-          Notifications.success('Network successfully created');
+          Notifications.success('网络创建成功');
           if (context.reload) {
             $state.go(
               'docker.networks',
@@ -239,7 +239,7 @@ angular.module('portainer.docker').controller('CreateNetworkController', [
           }
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'An error occured during network creation');
+          Notifications.error('失败', err, '创建网络时出错');
         })
         .finally(function final() {
           $scope.state.actionInProgress = false;
@@ -307,7 +307,7 @@ angular.module('portainer.docker').controller('CreateNetworkController', [
           $scope.availableNetworkDrivers = _.filter($scope.availableNetworkDrivers, (driver) => driver !== 'host' && driver !== 'null');
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve network drivers');
+          Notifications.error('失败', err, '无法检索网络驱动');
         });
     }
 

@@ -13,7 +13,7 @@ function ContainersController($scope, ContainerService, Notifications, endpoint)
         $scope.containers = data;
       })
       .catch(function error(err) {
-        Notifications.error('Failure', err, 'Unable to retrieve containers');
+        Notifications.error('失败', err, '无法检索容器');
         $scope.containers = [];
       });
   }

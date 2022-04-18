@@ -6,7 +6,7 @@ import { ResourceControlOwnership } from '@/portainer/models/resourceControl/res
 import type { DockerContainer } from '@/docker/containers/types';
 
 export const ownership: Column<DockerContainer> = {
-  Header: 'Ownership',
+  Header: '所有者',
   id: 'ownership',
   accessor: (row) =>
     row.ResourceControl?.Ownership || ResourceControlOwnership.ADMINISTRATORS,

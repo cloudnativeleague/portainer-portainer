@@ -15,7 +15,7 @@ export function ContainersDatatableSettings({ isRefreshVisible }: Props) {
     <>
       <Checkbox
         id="settings-container-truncate-nae"
-        label="Truncate container name"
+        label="截断容器名称"
         checked={settings.truncateContainerName > 0}
         onChange={() =>
           setTableSettings((settings) => ({

@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Team details"></rd-header-title>
+  <rd-header-title title-text="组详情"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.teams">Teams</a> &gt; <a ui-sref="portainer.teams.team({id: team.Id})">{{ team.Name }}</a>
+    <a ui-sref="portainer.teams">组</a> &gt; <a ui-sref="portainer.teams.team({id: team.Id})">{{ team.Name }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -13,20 +13,18 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>名称</td>
               <td>
                 {{ team.Name }}
-                <button class="btn btn-xs btn-danger" ng-if="isAdmin" ng-click="deleteTeam()"
-                  ><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Delete this team</button
-                >
+                <button class="btn btn-xs btn-danger" ng-if="isAdmin" ng-click="deleteTeam()"><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>删除此组</button>
               </td>
             </tr>
             <tr>
-              <td>Leaders</td>
+              <td>领导</td>
               <td>{{ leaderCount }}</td>
             </tr>
             <tr>
-              <td>Total users in team</td>
+              <td>此组总成员</td>
               <td>{{ teamMembers.length }}</td>
             </tr>
           </tbody>

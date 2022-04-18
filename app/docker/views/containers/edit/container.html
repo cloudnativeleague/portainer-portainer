@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Container details"> </rd-header-title>
+  <rd-header-title title-text="容器详情"> </rd-header-title>
   <rd-header-content>
-    <a ui-sref="docker.containers">Containers</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name | trimcontainername }}</a>
+    <a ui-sref="docker.containers">容器</a> &gt; <a ui-sref="docker.containers.container({id: container.Id})">{{ container.Name | trimcontainername }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -11,33 +11,33 @@
 >
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
-      <rd-widget-header icon="fa-cogs" title-text="Actions"></rd-widget-header>
+      <rd-widget-header icon="fa-cogs" title-text="动作"></rd-widget-header>
       <rd-widget-body classes="padding">
         <div class="btn-group" role="group" aria-label="...">
           <button authorization="DockerContainerStart" class="btn btn-success btn-sm" ng-click="start()" ng-disabled="container.State.Running || container.IsPortainer"
-            ><i class="fa fa-play space-right" aria-hidden="true"></i>Start</button
+            ><i class="fa fa-play space-right" aria-hidden="true"></i>启动</button
           >
           <button authorization="DockerContainerStop" class="btn btn-danger btn-sm" ng-click="stop()" ng-disabled="!container.State.Running || container.IsPortainer"
-            ><i class="fa fa-stop space-right" aria-hidden="true"></i>Stop</button
+            ><i class="fa fa-stop space-right" aria-hidden="true"></i>停止</button
           >
           <button authorization="DockerContainerKill" class="btn btn-danger btn-sm" ng-click="kill()" ng-disabled="!container.State.Running || container.IsPortainer"
-            ><i class="fa fa-bomb space-right" aria-hidden="true"></i>Kill</button
+            ><i class="fa fa-bomb space-right" aria-hidden="true"></i>终止</button
           >
           <button authorization="DockerContainerRestart" class="btn btn-primary btn-sm" ng-click="restart()" ng-disabled="!container.State.Running || container.IsPortainer"
-            ><i class="fa fa-sync space-right" aria-hidden="true"></i>Restart</button
+            ><i class="fa fa-sync space-right" aria-hidden="true"></i>重启</button
           >
           <button
             authorization="DockerContainerPause"
             class="btn btn-primary btn-sm"
             ng-click="pause()"
             ng-disabled="!container.State.Running || container.State.Paused || container.IsPortainer"
-            ><i class="fa fa-pause space-right" aria-hidden="true"></i>Pause</button
+            ><i class="fa fa-pause space-right" aria-hidden="true"></i>暂停</button
           >
           <button authorization="DockerContainerUnpause" class="btn btn-primary btn-sm" ng-click="unpause()" ng-disabled="!container.State.Paused || container.IsPortainer"
-            ><i class="fa fa-play space-right" aria-hidden="true"></i>Resume</button
+            ><i class="fa fa-play space-right" aria-hidden="true"></i>恢复</button
           >
           <button authorization="DockerContainerDelete" class="btn btn-danger btn-sm" ng-click="confirmRemove()" ng-disabled="container.IsPortainer"
-            ><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Remove</button
+            ><i class="fa fa-trash-alt space-right" aria-hidden="true"></i>移出</button
           >
         </div>
         <div class="btn-group" role="group" aria-label="..." ng-if="displayRecreateButton" authorization="DockerContainerCreate">
@@ -48,11 +48,11 @@
             ng-click="recreate()"
             button-spinner="state.recreateContainerInProgress"
           >
-            <span ng-hide="state.recreateContainerInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>Recreate</span>
-            <span ng-show="state.recreateContainerInProgress">Recreation in progress...</span>
+            <span ng-hide="state.recreateContainerInProgress"><i class="fa fa-sync space-right" aria-hidden="true"></i>重建</span>
+            <span ng-show="state.recreateContainerInProgress">重建中...</span>
           </button>
           <a class="btn btn-primary btn-sm" type="button" ui-sref="docker.containers.new({ from: container.Id, nodeName: nodeName })" ng-disabled="container.IsPortainer"
-            ><i class="fa fa-copy space-right" aria-hidden="true"></i>Duplicate/Edit</a
+            ><i class="fa fa-copy space-right" aria-hidden="true"></i>复制/编辑</a
           >
         </div>
       </rd-widget-body>
@@ -68,14 +68,14 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>ID</td>
+              <td>编号</td>
               <td>{{ container.Id }}</td>
             </tr>
             <tr>
-              <td>Name</td>
+              <td>名称</td>
               <td ng-if="!container.edit">
                 {{ container.Name | trimcontainername }}
-                <a authorization="DockerContainerRename" href="" data-toggle="tooltip" title="Edit container name" ng-click="container.edit = true;"><i class="fa fa-edit"></i></a>
+                <a authorization="DockerContainerRename" href="" data-toggle="tooltip" title="编辑容器名称" ng-click="container.edit = true;"><i class="fa fa-edit"></i></a>
               </td>
               <td ng-if="container.edit">
                 <form ng-submit="renameContainer()">
@@ -86,47 +86,47 @@
               </td>
             </tr>
             <tr ng-if="container.NetworkSettings.IPAddress">
-              <td>IP address</td>
+              <td>IP地址</td>
               <td>{{ container.NetworkSettings.IPAddress }}</td>
             </tr>
             <tr>
-              <td>Status</td>
+              <td>状态</td>
               <td>
                 <i class="fa fa-heartbeat space-right green-icon" ng-if="container.State.Running"></i>
                 <i class="fa fa-heartbeat space-right red-icon" ng-if="!container.State.Running && container.State.Status !== 'created'"></i>
-                {{ container.State | getstatetext }} for {{ activityTime
-                }}<span ng-if="!container.State.Running && container.State.Status !== 'created'"> with exit code {{ container.State.ExitCode }}</span>
+                {{ container.State | getstatetext }} 为 {{ activityTime
+                }}<span ng-if="!container.State.Running && container.State.Status !== 'created'"> ，状态码： {{ container.State.ExitCode }}</span>
               </td>
             </tr>
             <tr>
-              <td>Created</td>
+              <td>创建时间</td>
               <td>{{ container.Created | getisodate }}</td>
             </tr>
             <tr ng-if="container.State.Running">
-              <td>Start time</td>
+              <td>启动</td>
               <td>{{ container.State.StartedAt | getisodate }}</td>
             </tr>
             <tr ng-if="!container.State.Running && container.State.Status !== 'created'">
-              <td>Finished</td>
+              <td>完成</td>
               <td>{{ container.State.FinishedAt | getisodate }}</td>
             </tr>
             <tr authorization="DockerContainerLogs, DockerContainerInspect, DockerContainerStats, DockerExecStart">
               <td colspan="2">
                 <div class="btn-group" role="group" aria-label="...">
                   <a authorization="DockerContainerLogs" class="btn" type="button" ui-sref="docker.containers.container.logs({ id: container.Id })"
-                    ><i class="fa fa-file-alt space-right" aria-hidden="true"></i>Logs</a
+                    ><i class="fa fa-file-alt space-right" aria-hidden="true"></i>日志</a
                   >
                   <a authorization="DockerContainerInspect" class="btn" type="button" ui-sref="docker.containers.container.inspect({ id: container.Id })"
-                    ><i class="fa fa-info-circle space-right" aria-hidden="true"></i>Inspect</a
+                    ><i class="fa fa-info-circle space-right" aria-hidden="true"></i>检查</a
                   >
                   <a authorization="DockerContainerStats" class="btn" type="button" ui-sref="docker.containers.container.stats({ id: container.Id })"
-                    ><i class="fa fa-chart-area space-right" aria-hidden="true"></i>Stats</a
+                    ><i class="fa fa-chart-area space-right" aria-hidden="true"></i>统计</a
                   >
                   <a authorization="DockerExecStart" class="btn" type="button" ui-sref="docker.containers.container.exec({ id: container.Id })"
-                    ><i class="fa fa-terminal space-right" aria-hidden="true"></i>Console</a
+                    ><i class="fa fa-terminal space-right" aria-hidden="true"></i>控制台</a
                   >
                   <a authorization="DockerContainerAttach" class="btn" type="button" ui-sref="docker.containers.container.attach({ id: container.Id })"
-                    ><i class="fa fa-plug space-right" aria-hidden="true"></i>Attach</a
+                    ><i class="fa fa-plug space-right" aria-hidden="true"></i>进入</a
                   >
                 </div>
               </td>
@@ -150,7 +150,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Status</td>
+              <td>状态</td>
               <td>
                 <i
                   ng-class="
@@ -163,11 +163,11 @@
               </td>
             </tr>
             <tr>
-              <td>Failure count</td>
+              <td>失败统计</td>
               <td>{{ container.State.Health.FailingStreak }}</td>
             </tr>
             <tr>
-              <td>Last output</td>
+              <td>上次输出</td>
               <td>{{ container.State.Health.Log[container.State.Health.Log.length - 1].Output }}</td>
             </tr>
           </tbody>
@@ -186,10 +186,7 @@
           <!-- tag-description -->
           <div class="form-group">
             <div class="col-sm-12">
-              <span class="small text-muted">
-                You can create an image from this container, this allows you to backup important data or save helpful configurations. You'll be able to spin up another container
-                based on this image afterward.
-              </span>
+              <span class="small text-muted"> 您可以从这个容器创建一个映像，这允许您备份重要数据或保存有用的配置。之后，您将能够基于此图像旋转另一个容器。 </span>
             </div>
           </div>
           <!-- !tag-description -->
@@ -208,7 +205,7 @@
           <!-- tag-note -->
           <div class="form-group">
             <div class="col-sm-12">
-              <span class="small text-muted">Note: if you don't specify the tag in the image name, <span class="label label-default">latest</span> will be used.</span>
+              <span class="small text-muted">注意: 如果你没有指定镜像标签,将使用 <span class="label label-default">latest</span> 标签.</span>
             </div>
           </div>
           <!-- !tag-note -->
@@ -220,7 +217,7 @@
                 ng-disabled="!state.pullImageValidity || !config.RegistryModel.Image || config.commitInProgress"
                 ng-click="commit()"
               >
-                Create
+                创建
               </button>
             </div>
           </div>
@@ -237,31 +234,31 @@
         <table class="table container-details-table">
           <tbody>
             <tr>
-              <td>Image</td>
+              <td>镜像</td>
               <td
                 ><a ui-sref="docker.images.image({ id: container.Image, nodeName: nodeName })">{{ container.Config.Image }}@{{ container.Image }}</a></td
               >
             </tr>
             <tr ng-if="portBindings.length > 0">
-              <td>Port configuration</td>
+              <td>端口配置</td>
               <td>
                 <div ng-repeat="portMapping in portBindings"> {{ portMapping.host }} <i class="fa fa-long-arrow-alt-right"></i> {{ portMapping.container }} </div>
               </td>
             </tr>
             <tr>
-              <td>CMD</td>
+              <td>命令行</td>
               <td
                 ><code>{{ container.Config.Cmd | command }}</code></td
               >
             </tr>
             <tr>
-              <td>ENTRYPOINT</td>
+              <td>入口点</td>
               <td
                 ><code>{{ container.Config.Entrypoint ? (container.Config.Entrypoint | command) : 'null' }}</code></td
               >
             </tr>
             <tr>
-              <td>ENV</td>
+              <td>环境变量</td>
               <td>
                 <table class="table table-bordered table-condensed">
                   <tr ng-repeat="var in container.Config.Env track by $index">
@@ -272,7 +269,7 @@
               </td>
             </tr>
             <tr ng-if="!(container.Config.Labels | emptyobject)">
-              <td>Labels</td>
+              <td>标签</td>
               <td>
                 <table class="table table-bordered table-condensed">
                   <tr ng-repeat="(k, v) in container.Config.Labels">
@@ -283,7 +280,7 @@
               </td>
             </tr>
             <tr>
-              <td>Restart policies</td>
+              <td>重启策略</td>
               <td>
                 <container-restart-policy
                   ng-if="container"
@@ -315,13 +312,13 @@
 <div class="row" ng-if="container.Mounts.length > 0">
   <div class="col-lg-12 col-md-12 col-xs-12">
     <rd-widget>
-      <rd-widget-header icon="fa-hdd" title-text="Volumes"></rd-widget-header>
+      <rd-widget-header icon="fa-hdd" title-text="存储卷"></rd-widget-header>
       <rd-widget-body classes="no-padding">
         <table class="table">
           <thead>
             <tr>
-              <th>Host/volume</th>
-              <th>Path in container</th>
+              <th>主机/存储卷</th>
+              <th>容器中路径</th>
             </tr>
           </thead>
           <tbody>
@@ -343,7 +340,7 @@
   <div class="col-sm-12">
     <container-networks-datatable
       ng-if="container.NetworkSettings.Networks"
-      title-text="Connected networks"
+      title-text="已连接网络"
       title-icon="fa-sitemap"
       dataset="container.NetworkSettings.Networks"
       table-key="container-networks"

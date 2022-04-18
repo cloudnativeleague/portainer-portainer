@@ -1,6 +1,6 @@
 <rd-header>
-  <rd-header-title title-text="Create environment"></rd-header-title>
-  <rd-header-content> <a ui-sref="portainer.endpoints">Environments</a> &gt; Add environment </rd-header-content>
+  <rd-header-title title-text="创建环境"></rd-header-title>
+  <rd-header-content> <a ui-sref="portainer.endpoints">环境</a> &gt; 添加环境 </rd-header-content>
 </rd-header>
 
 <div class="row">
@@ -8,7 +8,7 @@
     <rd-widget>
       <rd-widget-body>
         <form class="form-horizontal" name="endpointCreationForm">
-          <div class="col-sm-12 form-section-title"> Environment type </div>
+          <div class="col-sm-12 form-section-title"> 环境类型 </div>
           <div class="form-group"></div>
           <div class="form-group" style="margin-bottom: 0">
             <div class="boxselector_wrapper">
@@ -17,9 +17,9 @@
                 <label for="agent_endpoint" data-cy="endpointCreate-agentSelectButton">
                   <div class="boxselector_header">
                     <i class="fa fa-bolt" aria-hidden="true" style="margin-right: 2px"></i>
-                    Agent
+                    代理
                   </div>
-                  <p>Portainer agent</p>
+                  <p>ContainerPeacock代理</p>
                 </label>
               </div>
               <div ng-click="setDefaultPortainerInstanceURL()">
@@ -27,9 +27,9 @@
                 <label for="edge_agent_endpoint" data-cy="endpointCreate-edgeAgentSelectButton">
                   <div class="boxselector_header">
                     <i class="fa fa-cloud" aria-hidden="true" style="margin-right: 2px"></i>
-                    Edge Agent
+                    边缘代理
                   </div>
-                  <p>Portainer Edge agent</p>
+                  <p>ContainerPeacock边缘代理</p>
                 </label>
               </div>
               <div ng-show="!state.isEdgeDevice" ng-click="resetEndpointURL()">
@@ -39,7 +39,7 @@
                     <i class="fab fa-docker" aria-hidden="true" style="margin-right: 2px"></i>
                     Docker
                   </div>
-                  <p>Directly connect to the Docker API</p>
+                  <p>直接连接Docker API</p>
                 </label>
               </div>
               <div ng-show="!state.isEdgeDevice" ng-click="resetEndpointURL()">
@@ -49,7 +49,7 @@
                     <i class="fas fa-dharmachakra" aria-hidden="true" style="margin-right: 2px"></i>
                     Kubernetes
                   </div>
-                  <p>Local Kubernetes environment</p>
+                  <p>本地Kubernetes环境</p>
                 </label>
               </div>
               <div ng-show="!state.isEdgeDevice">
@@ -59,21 +59,21 @@
                     <i class="fab fa-microsoft" aria-hidden="true" style="margin-right: 2px"></i>
                     Azure
                   </div>
-                  <p>Connect to Microsoft Azure ACI</p>
+                  <p>连接Microsoft Azure ACI</p>
                 </label>
               </div>
             </div>
           </div>
           <div ng-if="state.EnvironmentType === 'docker'">
-            <div class="col-sm-12 form-section-title"> Important notice </div>
+            <div class="col-sm-12 form-section-title"> 重要通知 </div>
             <div class="form-group">
               <p class="col-sm-12 text-muted small">
-                You can connect Portainer to a Docker environment via socket or via TCP. You can find more information about how to expose the Docker API over TCP
-                <a href="https://docs.docker.com/engine/security/https/"> in the Docker documentation</a>.
+                您可以通过套接字或TCP将ContainerPeacock连接到Docker环境。您可以找到有关如何通过TCP公开Docker API的更多信息，在
+                <a href="https://docs.docker.com/engine/security/https/"> 官方文档中</a>.
               </p>
 
               <p class="col-sm-12 text-muted small">
-                When using the socket, ensure that you have started the Portainer container with the following Docker flag
+                使用套接字时，请确保已使用以下Docker标志启动ContainerPeacock容器
                 <code> -v "/var/run/docker.sock:/var/run/docker.sock" </code>
                 (on Linux) or
                 <code> -v \.\pipe\docker_engine:\.\pipe\docker_engine </code>
@@ -82,10 +82,10 @@
             </div>
           </div>
           <div ng-if="state.EnvironmentType === 'agent'">
-            <div class="col-sm-12 form-section-title"> Information </div>
+            <div class="col-sm-12 form-section-title"> 信息 </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                Ensure that you have deployed the Portainer agent in your cluster first. Refer to the platform related command below to deploy it.
+                确保首先在集群中部署了ContainerPeacock代理。请参阅下面与平台相关的命令来部署它。
                 <div class="input-group input-group-sm" style="margin-top: 10px; margin-bottom: 10px">
                   <div class="btn-group btn-group-sm">
                     <label class="btn btn-primary" ng-model="state.PlatformType" uib-btn-radio="'linux'"><i class="fab fa-linux" style="margin-right: 2px"></i> Linux</label>
@@ -108,7 +108,7 @@
                     </uib-tab>
                   </uib-tabset>
                   <div style="margin-top: 10px">
-                    <span class="btn btn-primary btn-sm space-left" ng-click="copyAgentCommand()"><i class="fa fa-copy space-right" aria-hidden="true"></i>Copy command</span>
+                    <span class="btn btn-primary btn-sm space-left" ng-click="copyAgentCommand()"><i class="fa fa-copy space-right" aria-hidden="true"></i>复制命令</span>
                     <span>
                       <i id="copyNotification" class="fa fa-check green-icon" aria-hidden="true" style="margin-left: 7px; display: none"></i>
                     </span>
@@ -118,51 +118,46 @@
             </div>
           </div>
           <div ng-if="state.EnvironmentType === 'edge_agent'">
-            <div class="col-sm-12 form-section-title"> Information </div>
+            <div class="col-sm-12 form-section-title"> 信息 </div>
             <div class="form-group">
               <span class="col-sm-12 text-muted small">
-                <p>
-                  Allows you to create an environment that can be registered with an Edge agent. The Edge agent will initiate the communications with the Portainer instance. All
-                  the required information on how to connect an Edge agent to this environment will be available after environment creation.
-                </p>
-                <p> You can read more about the Edge agent in the userguide available <a href="https://downloads.portainer.io/edge_agent_guide.pdf">here.</a> </p>
+                <p> 允许您创建可以向边缘代理注册的环境。边缘代理将启动与ContainerPeacock实例的通信。全部的 创建环境后，将提供有关如何将边缘代理连接到此环境的所需信息。 </p>
+                <!-- <p> You can read more about the Edge agent in the userguide available <a href="https://downloads.portainer.io/edge_agent_guide.pdf">here.</a> </p> -->
               </span>
             </div>
           </div>
           <div ng-if="state.EnvironmentType === 'kubernetes'">
-            <div class="col-sm-12 form-section-title"> Important notice </div>
+            <div class="col-sm-12 form-section-title">重要通知 </div>
             <div class="form-group">
-              <p class="col-sm-12 text-muted small"> This will allow you to manage the Kubernetes environment where Portainer is running. </p>
-
+              <p class="col-sm-12 text-muted small"> </p>
+              这将允许您管理运行ContainerPeacock的Kubernetes环境。
               <p class="col-sm-12 text-muted small">
                 <i class="fa fa-info-circle blue-icon" aria-hidden="true" style="margin-right: 2px"></i>
-                In order to manage a remote Kubernetes environment, please use the Agent or Edge agent options.
+                要管理远程Kubernetes环境，请使用代理或边缘代理选项。
               </p>
             </div>
           </div>
           <div ng-if="state.EnvironmentType === 'azure'">
-            <div class="col-sm-12 form-section-title"> Information </div>
+            <div class="col-sm-12 form-section-title"> 信息 </div>
             <div class="form-group">
               <div class="col-sm-12">
                 <span class="small">
-                  <p class="text-muted"> <i class="fa fa-flask orange-icon" aria-hidden="true" style="margin-right: 2px"></i> This feature is experimental. </p>
-                  <p class="text-primary"> Connect to Microsoft Azure to manage Azure Container Instances (ACI). </p>
+                  <p class="text-muted"> <i class="fa fa-flask orange-icon" aria-hidden="true" style="margin-right: 2px"></i> 这个特性是实验阶段。 </p>
+                  <p class="text-primary"> 连接到Microsoft Azure管理Azure Container Instances (ACI). </p>
                   <p class="text-muted">
                     <i class="fa fa-info-circle blue-icon" aria-hidden="true" style="margin-right: 2px"></i>
-                    Have a look at
-                    <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal" target="_blank"
-                      >the Azure documentation</a
-                    >
-                    to retrieve the credentials required below.
+                    请查阅
+                    <a href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal" target="_blank">Azure文档</a>
+                    检索下面所需的凭据。
                   </p>
                 </span>
               </div>
             </div>
           </div>
-          <div class="col-sm-12 form-section-title"> Environment details </div>
+          <div class="col-sm-12 form-section-title"> 环境详情 </div>
           <!-- name-input -->
           <div class="form-group">
-            <label for="container_name" class="col-sm-3 col-lg-2 control-label text-left">Name</label>
+            <label for="container_name" class="col-sm-3 col-lg-2 control-label text-left">名称</label>
             <div class="col-sm-9 col-lg-10">
               <input
                 type="text"
@@ -179,7 +174,7 @@
           <div class="form-group" ng-show="endpointCreationForm.container_name.$invalid">
             <div class="col-sm-12 small text-warning">
               <div ng-messages="endpointCreationForm.container_name.$error">
-                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
               </div>
             </div>
           </div>
@@ -187,7 +182,7 @@
           <!-- connect-via-socket-input -->
           <div ng-if="state.EnvironmentType === 'docker'">
             <div class="form-group" style="padding-left: 15px">
-              <label for="connect_socket" class="col-sm_12 control-label text-left"> Connect via socket </label>
+              <label for="connect_socket" class="col-sm_12 control-label text-left"> 通过Socket链接 </label>
               <label class="switch" style="margin-left: 20px">
                 <input type="checkbox" ng-model="formValues.ConnectSocket" /><i data-cy="endpointCreate-connectSocketSwitch"></i>
               </label>
@@ -196,7 +191,7 @@
 
           <div ng-if="state.EnvironmentType === 'docker' && formValues.ConnectSocket">
             <div class="form-group" style="padding-left: 15px">
-              <label for="override_socket" class="col-sm_12 control-label text-left"> Override default socket path </label>
+              <label for="override_socket" class="col-sm_12 control-label text-left"> 覆盖Socket路径 </label>
               <label class="switch" style="margin-left: 20px">
                 <input type="checkbox" ng-model="formValues.OverrideSocket" /><i data-cy="endpointCreate-overrideSocketSwitch"></i>
               </label>
@@ -205,9 +200,8 @@
             <div ng-if="formValues.OverrideSocket">
               <div class="form-group">
                 <label for="socket_path" class="col-sm-3 col-lg-2 control-label text-left">
-                  Socket path
-                  <portainer-tooltip position="bottom" message="Path to the Docker socket. Remember to bind-mount the socket, see the important notice above for more information.">
-                  </portainer-tooltip>
+                  Socket路径
+                  <portainer-tooltip position="bottom" message="Docker套接字的路径。记住绑定安装插座，更多信息请参见上面的重要注意事项。"> </portainer-tooltip>
                 </label>
                 <div class="col-sm-9 col-lg-10">
                   <input
@@ -224,7 +218,7 @@
               <div class="form-group" ng-show="endpointCreationForm.socket_path.$invalid">
                 <div class="col-sm-12 small text-warning">
                   <div ng-messages="endpointCreationForm.socket_path.$error">
-                    <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                    <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
                   </div>
                 </div>
               </div>
@@ -236,11 +230,7 @@
             <div class="form-group">
               <label for="endpoint_url" class="col-sm-3 col-lg-2 control-label text-left">
                 Environment URL
-                <portainer-tooltip
-                  position="bottom"
-                  message="URL or IP address of a Docker host. The Docker API must be exposed over a TCP port. Please refer to the Docker documentation to configure it."
-                >
-                </portainer-tooltip>
+                <portainer-tooltip position="bottom" message="Docker主机的URL或IP地址。Docker API必须通过TCP端口公开。请参考Docker文档进行配置。"> </portainer-tooltip>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input
@@ -268,7 +258,7 @@
             <div class="form-group" ng-show="endpointCreationForm.endpoint_url.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="endpointCreationForm.endpoint_url.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>必须填写此字段.</p>
                 </div>
               </div>
             </div>
@@ -279,7 +269,7 @@
             <div class="form-group">
               <label for="endpoint_url" class="col-sm-3 col-lg-2 control-label text-left">
                 Portainer server URL
-                <portainer-tooltip position="bottom" message="URL of the Portainer instance that the agent will use to initiate the communications."></portainer-tooltip>
+                <portainer-tooltip position="bottom" message="代理将用于启动通信的ContainerPeacock实例的URL."></portainer-tooltip>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input
@@ -296,19 +286,15 @@
             <div class="form-group" ng-show="endpointCreationForm.endpoint_url.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="endpointCreationForm.endpoint_url.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
                 </div>
               </div>
             </div>
             <!-- !portainer-instance-input -->
             <div class="form-group">
               <label for="edge_checkin" class="col-sm-2 control-label text-left">
-                Poll frequency
-                <portainer-tooltip
-                  position="bottom"
-                  message="Interval used by this Edge agent to check in with the Portainer instance. Affects Edge environment management and Edge compute features."
-                >
-                </portainer-tooltip>
+                投票频率
+                <portainer-tooltip position="bottom" message="此边缘代理用于签入ContainerPeacock实例的时间间隔。影响边缘环境管理和边缘计算功能。"> </portainer-tooltip>
               </label>
               <div class="col-sm-10">
                 <select
@@ -325,12 +311,8 @@
           <div ng-if="state.EnvironmentType === 'docker' || state.EnvironmentType === 'agent'">
             <div class="form-group">
               <label for="endpoint_public_url" class="col-sm-3 col-lg-2 control-label text-left">
-                Public IP
-                <portainer-tooltip
-                  position="bottom"
-                  message="URL or IP address where exposed containers will be reachable. This field is optional and will default to the environment URL."
-                >
-                </portainer-tooltip>
+                公共IP
+                <portainer-tooltip position="bottom" message="可访问暴露容器的URL或IP地址。此字段是可选的，默认为环境URL。"> </portainer-tooltip>
               </label>
               <div class="col-sm-9 col-lg-10">
                 <input
@@ -349,7 +331,7 @@
           <div ng-if="state.EnvironmentType === 'azure'">
             <!-- applicationId-input -->
             <div class="form-group">
-              <label for="azure_credential_appid" class="col-sm-3 col-lg-2 control-label text-left">Application ID</label>
+              <label for="azure_credential_appid" class="col-sm-3 col-lg-2 control-label text-left">应用ID</label>
               <div class="col-sm-9 col-lg-10">
                 <input
                   type="text"
@@ -365,14 +347,14 @@
             <div class="form-group" ng-show="endpointCreationForm.azure_credential_appid.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="endpointCreationForm.azure_credential_appid.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
                 </div>
               </div>
             </div>
             <!-- !applicationId-input -->
             <!-- tenantId-input -->
             <div class="form-group">
-              <label for="azure_credential_tenantid" class="col-sm-3 col-lg-2 control-label text-left">Tenant ID</label>
+              <label for="azure_credential_tenantid" class="col-sm-3 col-lg-2 control-label text-left">租户ID</label>
               <div class="col-sm-9 col-lg-10">
                 <input
                   type="text"
@@ -388,14 +370,14 @@
             <div class="form-group" ng-show="endpointCreationForm.azure_credential_tenantid.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="endpointCreationForm.azure_credential_tenantid.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
                 </div>
               </div>
             </div>
             <!-- !tenantId-input -->
             <!-- authenticationkey-input -->
             <div class="form-group">
-              <label for="azure_credential_authkey" class="col-sm-3 col-lg-2 control-label text-left">Authentication key</label>
+              <label for="azure_credential_authkey" class="col-sm-3 col-lg-2 control-label text-left">认证Key</label>
               <div class="col-sm-9 col-lg-10">
                 <input
                   type="text"
@@ -411,7 +393,7 @@
             <div class="form-group" ng-show="endpointCreationForm.azure_credential_authkey.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="endpointCreationForm.azure_credential_authkey.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 必须填写此字段.</p>
                 </div>
               </div>
             </div>
@@ -421,10 +403,10 @@
           <!-- endpoint-security -->
           <por-endpoint-security ng-if="state.EnvironmentType === 'docker' && !formValues.ConnectSocket" form-data="formValues.SecurityFormData"></por-endpoint-security>
           <!-- !endpoint-security -->
-          <div class="col-sm-12 form-section-title"> Metadata </div>
+          <div class="col-sm-12 form-section-title"> 元数据 </div>
           <!-- group -->
           <div class="form-group">
-            <label for="endpoint_group" class="col-sm-3 col-lg-2 control-label text-left"> Group </label>
+            <label for="endpoint_group" class="col-sm-3 col-lg-2 control-label text-left"> 组 </label>
             <div class="col-sm-9 col-lg-10">
               <select
                 ng-options="group.Id as group.Name for group in groups"
@@ -442,7 +424,7 @@
             </tag-selector>
           </div>
           <!-- !tags -->
-          <div class="col-sm-12 form-section-title"> Actions </div>
+          <div class="col-sm-12 form-section-title"> 动作 </div>
           <!-- actions -->
           <div class="form-group">
             <div class="col-sm-12">
@@ -459,8 +441,8 @@
                 analytics-event="portainer-endpoint-creation"
                 analytics-properties="{ metadata: { type: 'docker-api' } }"
               >
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Add environment</span>
-                <span ng-show="state.actionInProgress">Creating environment...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i>添加环境</span>
+                <span ng-show="state.actionInProgress">正在创建环境...</span>
               </button>
               <button
                 ng-if="state.EnvironmentType === 'agent'"
@@ -471,8 +453,8 @@
                 button-spinner="state.actionInProgress"
                 data-cy="endpointCreate-createAgentEndpoint"
               >
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Add environment</span>
-                <span ng-show="state.actionInProgress">Creating environment...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> 添加环境</span>
+                <span ng-show="state.actionInProgress">正在创建环境...</span>
               </button>
               <button
                 ng-if="state.EnvironmentType === 'edge_agent'"
@@ -487,8 +469,8 @@
                 analytics-event="portainer-endpoint-creation"
                 analytics-properties="{ metadata: { type: 'edge-agent' } }"
               >
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Add environment</span>
-                <span ng-show="state.actionInProgress">Creating environment...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> 添加环境</span>
+                <span ng-show="state.actionInProgress">正在创建环境...</span>
               </button>
               <button
                 ng-if="state.EnvironmentType === 'kubernetes'"
@@ -502,8 +484,8 @@
                 analytics-event="portainer-endpoint-creation"
                 analytics-properties="{ metadata: { type: 'kubernetes-api' } }"
               >
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Add environment</span>
-                <span ng-show="state.actionInProgress">Creating environment...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> 添加环境</span>
+                <span ng-show="state.actionInProgress">正在创建环境...</span>
               </button>
               <button
                 ng-if="state.EnvironmentType === 'azure'"
@@ -518,8 +500,8 @@
                 analytics-event="portainer-endpoint-creation"
                 analytics-properties="{ metadata: { type: 'azure-api' } }"
               >
-                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> Add environment</span>
-                <span ng-show="state.actionInProgress">Creating environment...</span>
+                <span ng-hide="state.actionInProgress"><i class="fa fa-plus" aria-hidden="true"></i> 添加环境</span>
+                <span ng-show="state.actionInProgress">正在创建环境...</span>
               </button>
             </div>
           </div>

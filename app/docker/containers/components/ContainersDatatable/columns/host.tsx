@@ -3,7 +3,7 @@ import { Column } from 'react-table';
 import type { DockerContainer } from '@/docker/containers/types';
 
 export const host: Column<DockerContainer> = {
-  Header: 'Host',
+  Header: '主机',
   accessor: (row) => row.NodeName || '-',
   id: 'host',
   disableFilters: true,

@@ -15,7 +15,7 @@
           <div style="padding-bottom: 12px">
             <a ng-click="togglePanel()">
               <i ng-class="{ true: 'glyphicon glyphicon-chevron-down', false: 'glyphicon glyphicon-chevron-right' }[state.showInitPassword]" aria-hidden="true"></i
-              ><span style="padding-left: 10px">New Portainer installation</span>
+              ><span style="padding-left: 10px">安装新的ContainerPeacock</span>
             </a>
           </div>
           <!-- !toggle -->
@@ -25,13 +25,13 @@
             <!-- note -->
             <div class="form-group">
               <div class="col-sm-12">
-                <span class="small text-muted"> Please create the initial administrator user. </span>
+                <span class="small text-muted"> 请创建初始化管理员用户. </span>
               </div>
             </div>
             <!-- !note -->
             <!-- username-input -->
             <div class="form-group">
-              <label for="username" class="col-sm-4 control-label text-left"> Username </label>
+              <label for="username" class="col-sm-4 control-label text-left"> 用户 </label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="username" ng-model="formValues.Username" placeholder="e.g. admin" />
               </div>
@@ -39,7 +39,7 @@
             <!-- !username-input -->
             <!-- new-password-input -->
             <div class="form-group">
-              <label for="password" class="col-sm-4 control-label text-left">Password</label>
+              <label for="password" class="col-sm-4 control-label text-left">密码</label>
               <div class="col-sm-8">
                 <input type="password" class="form-control" ng-model="formValues.Password" id="password" auto-focus />
               </div>
@@ -47,7 +47,7 @@
             <!-- !new-password-input -->
             <!-- confirm-password-input -->
             <div class="form-group">
-              <label for="confirm_password" class="col-sm-4 control-label text-left">Confirm password</label>
+              <label for="confirm_password" class="col-sm-4 control-label text-left">确认密码</label>
               <div class="col-sm-8">
                 <div class="input-group">
                   <input type="password" class="form-control" ng-model="formValues.ConfirmPassword" id="confirm_password" />
@@ -66,7 +66,7 @@
               <div class="col-sm-12">
                 <span class="small text-muted">
                   <i ng-class="{ true: 'fa fa-check green-icon', false: 'fa fa-times red-icon' }[formValues.Password.length >= 8]" aria-hidden="true"></i>
-                  The password must be at least 8 characters long
+                  密码长度必须至少为8个字符
                 </span>
               </div>
             </div>
@@ -81,8 +81,8 @@
                   ng-click="createAdminUser()"
                   button-spinner="state.actionInProgress"
                 >
-                  <span ng-hide="state.actionInProgress"><i class="fa fa-user-plus" aria-hidden="true"></i> Create user</span>
-                  <span ng-show="state.actionInProgress">Creating user...</span>
+                  <span ng-hide="state.actionInProgress"><i class="fa fa-user-plus" aria-hidden="true"></i> 创建用户</span>
+                  <span ng-show="state.actionInProgress">正在创建用户...</span>
                 </button>
               </div>
             </div>
@@ -91,9 +91,9 @@
             <div class="form-group">
               <div class="col-sm-12">
                 <input type="checkbox" name="toggle_enableTelemetry" ng-model="formValues.enableTelemetry" />
-                <span class="text-muted small" style="margin-left: 2px"
-                  >Allow collection of anonymous statistics. You can find more information about this in our
-                  <a href="https://www.portainer.io/documentation/in-app-analytics-and-privacy-policy/" target="_blank">privacy policy</a>.</span
+                <span class="text-muted small" style="margin-left: 2px">
+                  允许收集匿名统计信息。你可以在我们的网站上找到更多信息
+                  <a href="https://www.portainer.io/documentation/in-app-analytics-and-privacy-policy/" target="_blank">隐私策略</a>.</span
                 >
               </div>
             </div>
@@ -111,7 +111,7 @@
           <div style="padding-bottom: 12px">
             <a ng-click="togglePanel()">
               <i ng-class="{ true: 'glyphicon glyphicon-chevron-down', false: 'glyphicon glyphicon-chevron-right' }[state.showRestorePortainer]" aria-hidden="true"></i
-              ><span style="padding-left: 10px">Restore Portainer from backup</span>
+              ><span style="padding-left: 10px">从备份中恢复ContainerPeacock</span>
             </a>
           </div>
           <!-- !toggle -->
@@ -121,9 +121,7 @@
             <!-- note -->
             <div class="form-group">
               <div class="col-sm-9">
-                <span class="small text-muted">
-                  This will restore the Portainer metadata which contains information about the environments, stacks and applications, as well as the configured users.
-                </span>
+                <span class="small text-muted"> 这将恢复ContainerPeacock元数据，其中包含有关环境、堆栈和应用程序以及已配置用户的信息。 </span>
               </div>
             </div>
             <!-- !note -->
@@ -134,7 +132,7 @@
                   <label for="restore_file" style="padding-bottom: 20px">
                     <div class="boxselector_header">
                       <i class="fa fa-upload" aria-hidden="true" style="margin-right: 2px"></i>
-                      Upload backup file
+                      上传备份文件
                     </div>
                     <p></p>
                   </label>
@@ -144,9 +142,9 @@
                   <label for="restore_s3" class="boxselector_disabled" style="background-color: #ffffff">
                     <div class="boxselector_header">
                       <i class="fa fa-download" aria-hidden="true" style="margin-right: 2px"></i>
-                      Retrieve from S3
+                      从S3中检索
                     </div>
-                    <p>This feature is available in <a href="https://www.portainer.io/business-upsell?from=restore-s3-form" target="_blank"> Portainer Business Edition</a></p>
+                    <!-- <p>This feature is available in <a href="https://www.portainer.io/business-upsell?from=restore-s3-form" target="_blank"> Portainer Business Edition</a></p> -->
                   </label>
                 </div>
               </div>
@@ -154,7 +152,7 @@
             <!-- note -->
             <div class="form-group">
               <div class="col-sm-12">
-                <span class="small text-muted"> You can upload a backup file from your computer. </span>
+                <span class="small text-muted"> 你可以从电脑上传备份文件。 </span>
               </div>
             </div>
             <!-- !note -->
@@ -168,7 +166,7 @@
                   ngf-accept="'application/x-tar,application/x-gzip'"
                   ng-model="formValues.BackupFile"
                   auto-focus
-                  >Select file</button
+                  >选择文件</button
                 >
                 <span style="margin-left: 5px">
                   {{ formValues.BackupFile.name }}
@@ -180,11 +178,8 @@
             <!-- password-input -->
             <div class="form-group">
               <label for="password" class="col-sm-3 control-label text-left">
-                Password
-                <portainer-tooltip
-                  position="bottom"
-                  message="If the backup is password protected, provide the password in order to extract the backup file, otherwise this field can be left empty."
-                ></portainer-tooltip>
+                密码
+                <portainer-tooltip position="bottom" message="如果备份受密码保护，请提供密码以提取备份文件，否则此字段可以留空。"></portainer-tooltip>
               </label>
               <div class="col-sm-4">
                 <input type="password" class="form-control" ng-model="formValues.Password" id="password" />
@@ -194,10 +189,10 @@
             <!-- note -->
             <div class="form-group">
               <div class="col-sm-12">
-                <span class="small text-muted"> You are about to restore Portainer from this backup. </span>
+                <span class="small text-muted"> 您即将从此备份还原ContainerPeacock。 </span>
               </div>
               <div class="col-sm-12">
-                <span class="small text-muted"> After restoring has completed, please log in as a user that was known by the Portainer that was restored. </span>
+                <span class="small text-muted"> 还原完成后，请以被还原的ContainerPeacock已知的用户身份登录。 </span>
               </div>
             </div>
             <!-- !note -->
@@ -211,8 +206,8 @@
                   ng-click="uploadBackup()"
                   button-spinner="state.backupInProgress"
                 >
-                  <span ng-hide="state.backupInProgress">Restore Portainer</span>
-                  <span ng-show="state.backupInProgress">Restoring Portainer...</span>
+                  <span ng-hide="state.backupInProgress">还原ContainerPeacock</span>
+                  <span ng-show="state.backupInProgress">正在还原ContainerPeacock...</span>
                 </button>
               </div>
             </div>

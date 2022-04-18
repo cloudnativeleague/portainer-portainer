@@ -1,10 +1,10 @@
 <rd-header>
-  <rd-header-title title-text="Stack details">
+  <rd-header-title title-text="堆栈详情">
     <a data-toggle="tooltip" title-text="Refresh" ui-sref="docker.stacks.stack({id: stack.Id})" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content> <a ui-sref="docker.stacks">Stacks</a> &gt; {{ stackName }} </rd-header-content>
+  <rd-header-content> <a ui-sref="docker.stacks">堆栈</a> &gt; {{ stackName }} </rd-header-content>
 </rd-header>
 
 <div class="row">
@@ -14,17 +14,17 @@
         <uib-tabset active="state.activeTab">
           <!-- tab-info -->
           <uib-tab index="0">
-            <uib-tab-heading> <i class="fa fa-th-list" aria-hidden="true"></i> Stack </uib-tab-heading>
+            <uib-tab-heading> <i class="fa fa-th-list" aria-hidden="true"></i> 堆栈 </uib-tab-heading>
             <div style="margin-top: 10px">
               <!-- stack-information -->
               <div ng-if="external || orphaned">
-                <div class="col-sm-12 form-section-title"> Information </div>
+                <div class="col-sm-12 form-section-title"> 信息 </div>
                 <div class="form-group">
                   <span class="small">
                     <p class="text-muted">
                       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px"></i>
-                      <span ng-if="external">This stack was created outside of Portainer. Control over this stack is limited.</span>
-                      <span ng-if="orphaned">This stack is orphaned. You can reassociate it with the current environment using the "Associate to this environment" feature.</span>
+                      <span ng-if="external">此堆栈是在ContainerPeacock之外创建的。对这个堆栈的控制是有限的。</span>
+                      <span ng-if="orphaned">这个堆栈是孤立的。您可以使用“关联到此环境”功能将其与当前环境重新关联。</span>
                     </p>
                   </span>
                 </div>
@@ -32,7 +32,7 @@
               <!-- !stack-information -->
               <!-- stack-details -->
               <div>
-                <div class="col-sm-12 form-section-title"> Stack details </div>
+                <div class="col-sm-12 form-section-title"> 堆栈详情 </div>
                 <div class="form-group">
                   {{ stackName }}
 
@@ -44,7 +44,7 @@
                     ng-click="startStack()"
                   >
                     <i class="fa fa-play space-right" aria-hidden="true"></i>
-                    Start this stack
+                    启动此堆栈
                   </button>
 
                   <button
@@ -55,12 +55,12 @@
                     ng-click="stopStack()"
                   >
                     <i class="fa fa-stop space-right" aria-hidden="true"></i>
-                    Stop this stack
+                    停止此堆栈
                   </button>
 
                   <button authorization="PortainerStackDelete" class="btn btn-xs btn-danger" ng-click="removeStack()" ng-if="!external || stack.Type == 1">
                     <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>
-                    Delete this stack
+                    删除此堆栈
                   </button>
 
                   <button
@@ -69,7 +69,7 @@
                     ui-sref="docker.templates.custom.new({fileContent: stackFileContent, type: stack.Type})"
                   >
                     <i class="fa fa-plus space-right" aria-hidden="true"></i>
-                    Create template from stack
+                    从堆栈创建模板
                   </button>
                   <button
                     authorization="PortainerStackUpdate"
@@ -80,8 +80,8 @@
                     class="btn btn-primary btn-xs"
                   >
                     <i class="fa fa-arrow-right space-right" aria-hidden="true"></i>
-                    <span ng-hide="state.actionInProgress">Detach from Git</span>
-                    <span ng-show="state.actionInProgress">Detachment in progress...</span>
+                    <span ng-hide="state.actionInProgress">从Git断开连接</span>
+                    <span ng-show="state.actionInProgress">正在断开...</span>
                   </button>
                 </div>
               </div>

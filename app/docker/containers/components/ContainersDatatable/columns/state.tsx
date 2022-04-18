@@ -9,7 +9,7 @@ import type {
 } from '@/docker/containers/types';
 
 export const state: Column<DockerContainer> = {
-  Header: 'State',
+  Header: '状态',
   accessor: 'Status',
   id: 'state',
   Cell: StatusCell,

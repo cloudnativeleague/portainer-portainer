@@ -1,6 +1,6 @@
 <rd-header>
-  <rd-header-title title-text="Docker features configuration"></rd-header-title>
-  <rd-header-content>Docker configuration</rd-header-content>
+  <rd-header-title title-text="Docker功能配置"></rd-header-title>
+  <rd-header-content>Docker配置</rd-header-content>
 </rd-header>
 
 <div class="row">
@@ -8,11 +8,11 @@
     <rd-widget>
       <rd-widget-body>
         <form class="form-horizontal" name="$ctrl.form">
-          <div class="col-sm-12 form-section-title"> Host and Filesystem </div>
+          <div class="col-sm-12 form-section-title"> 主机和文件系统 </div>
           <div ng-if="!$ctrl.isAgent" class="form-group">
             <span class="col-sm-12 text-muted small">
               <i class="fa fa-info-circle blue-icon" aria-hidden="true" style="margin-right: 2px"></i>
-              These features are only available for an Agent enabled environments.
+              这些功能只能在启动Agent上的Docker容器中使用。
             </span>
           </div>
           <div class="form-group">
@@ -20,8 +20,8 @@
               <por-switch-field
                 checked="$ctrl.formValues.enableHostManagementFeatures"
                 name="'enableHostManagementFeatures'"
-                label="'Enable host management features'"
-                tooltip="'Enable host management features: host system browsing and advanced host details.'"
+                label="'启用主机管理功能'"
+                tooltip="'启用主机管理功能: 主机系统浏览和文件系统信息.'"
                 label-class="'col-sm-7 col-lg-4'"
                 disabled="!$ctrl.isAgent"
                 on-change="($ctrl.onChangeEnableHostManagementFeatures)"
@@ -33,8 +33,8 @@
               <por-switch-field
                 checked="$ctrl.formValues.allowVolumeBrowserForRegularUsers"
                 name="'allowVolumeBrowserForRegularUsers'"
-                label="'Enable volume management for non-administrators'"
-                tooltip="'When enabled, regular users will be able to use Portainer volume management features.'"
+                label="'为非管理用户启用存储卷管理'"
+                tooltip="'启用后，普通用户将能够使用Portainer卷管理功能。'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeAllowVolumeBrowserForRegularUsers)"
                 disabled="!$ctrl.isAgent"
@@ -42,17 +42,17 @@
             </div>
           </div>
           <!-- auto update window -->
-          <div class="col-sm-12 form-section-title"> Change Window Setting </div>
+          <div class="col-sm-12 form-section-title"> 更改窗口设置 </div>
 
           <div class="form-group">
             <div class="col-sm-12">
               <por-switch-field
                 checked="$ctrl.state.autoUpdateSettings.Enabled"
                 name="'disableSysctlSettingForRegularUsers'"
-                label="'Enable Change Window'"
+                label="'启用更改窗口'"
                 label-class="'col-sm-7 col-lg-4'"
                 feature-id="$ctrl.limitedFeature"
-                tooltip="'Specify a time-frame during which automatic updates can occur in this environment.'"
+                tooltip="'指定在此环境中可以进行自动更新的时间范围。'"
                 on-change="($ctrl.onToggleAutoUpdate)"
               >
               </por-switch-field>
@@ -60,14 +60,14 @@
           </div>
 
           <!-- security -->
-          <div class="col-sm-12 form-section-title"> Docker Security Settings </div>
+          <div class="col-sm-12 form-section-title"> Docker安全设置 </div>
           <div class="form-group">
             <div class="col-sm-12">
               <por-switch-field
                 checked="$ctrl.formValues.disableBindMountsForRegularUsers"
                 name="'disableBindMountsForRegularUsers'"
-                label="'Disable bind mounts for non-administrators'"
-                tooltip="'When enabled, regular users will not be able to use bind mounts when creating containers.'"
+                label="'禁用非管理员的绑定装载'"
+                tooltip="'启用后，普通用户在创建容器时将无法使用绑定挂载。'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableBindMountsForRegularUsers)"
               ></por-switch-field>
@@ -78,8 +78,8 @@
               <por-switch-field
                 checked="$ctrl.formValues.disablePrivilegedModeForRegularUsers"
                 name="'disablePrivilegedModeForRegularUsers'"
-                label="'Disable privileged mode for non-administrators'"
-                tooltip="'When enabled, regular users will not be able to use privileged mode when creating containers.'"
+                label="'为非管理员禁用特权模式'"
+                tooltip="'启用后，普通用户在创建容器时将无法使用特权模式。'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisablePrivilegedModeForRegularUsers)"
               ></por-switch-field>
@@ -90,8 +90,8 @@
               <por-switch-field
                 checked="$ctrl.formValues.disableHostNamespaceForRegularUsers"
                 name="'disableHostNamespaceForRegularUsers'"
-                label="'Disable the use of host PID 1 for non-administrators'"
-                tooltip="'Prevent users from accessing the host filesystem through the host PID namespace.'"
+                label="'禁止非管理员使用主机PID 1'"
+                tooltip="'阻止用户通过主机PID命名空间访问主机文件系统'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableHostNamespaceForRegularUsers)"
               ></por-switch-field>
@@ -102,7 +102,7 @@
               <por-switch-field
                 checked="$ctrl.formValues.disableStackManagementForRegularUsers"
                 name="'disableStackManagementForRegularUsers'"
-                label="'Disable the use of Stacks for non-administrators'"
+                label="'禁止非管理员使用堆栈'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableStackManagementForRegularUsers)"
               ></por-switch-field>
@@ -113,7 +113,7 @@
               <por-switch-field
                 checked="$ctrl.formValues.disableDeviceMappingForRegularUsers"
                 name="'disableDeviceMappingForRegularUsers'"
-                label="'Disable device mappings for non-administrators'"
+                label="'禁用非管理员的设备映射'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableDeviceMappingForRegularUsers)"
               ></por-switch-field>
@@ -124,7 +124,7 @@
               <por-switch-field
                 checked="$ctrl.formValues.disableContainerCapabilitiesForRegularUsers"
                 name="'disableContainerCapabilitiesForRegularUsers'"
-                label="'Disable container capabilities for non-administrators'"
+                label="'为非管理员禁用容器功能'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableContainerCapabilitiesForRegularUsers)"
               ></por-switch-field>
@@ -135,7 +135,7 @@
               <por-switch-field
                 checked="$ctrl.formValues.disableSysctlSettingForRegularUsers"
                 name="'disableSysctlSettingForRegularUsers'"
-                label="'Disable sysctl settings for non-administrators'"
+                label="'禁用非管理员的sysctl设置'"
                 label-class="'col-sm-7 col-lg-4'"
                 on-change="($ctrl.onChangeDisableSysctlSettingForRegularUsers)"
               ></por-switch-field>
@@ -145,18 +145,18 @@
           <div class="form-group" ng-if="$ctrl.isContainerEditDisabled()">
             <span class="col-sm-12 text-muted small">
               <i class="fa fa-info-circle blue-icon" aria-hidden="true" style="margin-right: 2px"></i>
-              Note: The recreate/duplicate/edit feature is currently disabled (for non-admin users) by one or more security settings.
+              注意：一个或多个安全设置当前禁用了“重新创建/复制/编辑”功能（对于非管理员用户）。
             </span>
           </div>
           <!-- !security -->
 
           <!-- actions -->
-          <div class="col-sm-12 form-section-title"> Actions </div>
+          <div class="col-sm-12 form-section-title"> 动作 </div>
           <div class="form-group">
             <div class="col-sm-12">
               <button type="button" class="btn btn-primary btn-sm" ng-click="$ctrl.save()" ng-disabled="$ctrl.state.actionInProgress" button-spinner="$ctrl.state.actionInProgress">
-                <span ng-hide="$ctrl.state.actionInProgress">Save configuration</span>
-                <span ng-show="$ctrl.state.actionInProgress">Saving...</span>
+                <span ng-hide="$ctrl.state.actionInProgress">保存配置</span>
+                <span ng-show="$ctrl.state.actionInProgress">正在保存...</span>
               </button>
             </div>
           </div>

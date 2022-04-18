@@ -1,7 +1,7 @@
 <rd-header>
-  <rd-header-title title-text="Registry details"></rd-header-title>
+  <rd-header-title title-text="注册中心详情"></rd-header-title>
   <rd-header-content>
-    <a ui-sref="portainer.registries">Registries</a> &gt; <a ui-sref="portainer.registries.registry({id: registry.Id})">{{ registry.Name }}</a>
+    <a ui-sref="portainer.registries">注册中心</a> &gt; <a ui-sref="portainer.registries.registry({id: registry.Id})">{{ registry.Name }}</a>
   </rd-header-content>
 </rd-header>
 
@@ -12,7 +12,7 @@
         <form class="form-horizontal">
           <!-- name-input -->
           <div class="form-group">
-            <label for="registry_name" class="col-sm-3 col-lg-2 control-label text-left">Name</label>
+            <label for="registry_name" class="col-sm-3 col-lg-2 control-label text-left">名称</label>
             <div class="col-sm-9 col-lg-10">
               <input type="text" class="form-control" id="registry_name" ng-model="registry.Name" placeholder="e.g. my-registry" />
             </div>
@@ -21,7 +21,7 @@
           <!-- registry-url-input -->
           <div class="form-group">
             <label for="registry_url" class="col-sm-3 col-lg-2 control-label text-left">
-              Registry URL
+              注册中心URL
               <portainer-tooltip
                 position="bottom"
                 message="URL or IP address of a Docker registry. Any protocol or trailing slash will be stripped if present."
@@ -37,7 +37,7 @@
           <div class="form-group" ng-if="registry.Type !== RegistryTypes.PROGET">
             <div class="col-sm-12">
               <label for="registry_auth" class="control-label text-left">
-                Authentication
+                认证
                 <portainer-tooltip position="bottom" message="Enable this option if you need to specify credentials to connect to this registry."></portainer-tooltip>
               </label>
               <label class="switch" style="margin-left: 20px"> <input type="checkbox" ng-model="registry.Authentication" /><i></i> </label>
@@ -74,7 +74,7 @@
             <!-- organisation-checkbox -->
             <div class="form-group">
               <div class="col-sm-12">
-                <label class="control-label text-left"> Use organisation registry </label>
+                <label class="control-label text-left">使用组织注册中心 </label>
                 <label class="switch" style="margin-left: 20px"> <input type="checkbox" ng-model="registry.Quay.UseOrganisation" /><i></i> </label>
               </div>
             </div>
@@ -82,7 +82,7 @@
             <div ng-if="registry.Quay.UseOrganisation">
               <!-- organisation_name -->
               <div class="form-group">
-                <label for="organisation_name" class="col-sm-3 col-lg-2 control-label text-left">Organisation name</label>
+                <label for="organisation_name" class="col-sm-3 col-lg-2 control-label text-left">组织名称</label>
                 <div class="col-sm-9 col-lg-10">
                   <input type="text" class="form-control" id="organisation_name" name="organisation_name" ng-model="registry.Quay.OrganisationName" required />
                 </div>
@@ -94,7 +94,7 @@
           <div ng-if="registry.Type == RegistryTypes.ECR">
             <!-- region -->
             <div class="form-group">
-              <label for="registry_region" class="col-sm-3 col-lg-2 control-label text-left">Region</label>
+              <label for="registry_region" class="col-sm-3 col-lg-2 control-label text-left">区域</label>
               <div class="col-sm-9 col-lg-10">
                 <input type="text" class="form-control" id="registry_region" name="registry_region" placeholder="us-west-1" ng-model="registry.Ecr.Region" required />
               </div>
@@ -102,7 +102,7 @@
             <div class="form-group" ng-show="registryFormEcr.registry_region.$invalid">
               <div class="col-sm-12 small text-warning">
                 <div ng-messages="registryFormEcr.registry_region.$error">
-                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+                  <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 此字段必须填写.</p>
                 </div>
               </div>
             </div>
@@ -118,10 +118,10 @@
                 ng-click="updateRegistry()"
                 button-spinner="state.actionInProgress"
               >
-                <span ng-hide="state.actionInProgress">Update registry</span>
-                <span ng-show="state.actionInProgress">Updating registry...</span>
+                <span ng-hide="state.actionInProgress">更新注册中心</span>
+                <span ng-show="state.actionInProgress">正在更新注册中心...</span>
               </button>
-              <a type="button" class="btn btn-default btn-sm" ui-sref="portainer.registries">Cancel</a>
+              <a type="button" class="btn btn-default btn-sm" ui-sref="portainer.registries">取消</a>
             </div>
           </div>
         </form>

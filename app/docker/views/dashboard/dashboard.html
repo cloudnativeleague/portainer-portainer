@@ -1,6 +1,6 @@
 <rd-header>
-  <rd-header-title title-text="Dashboard"></rd-header-title>
-  <rd-header-content>Environment summary</rd-header-content>
+  <rd-header-title title-text="仪表盘"></rd-header-title>
+  <rd-header-content>环境总览</rd-header-content>
 </rd-header>
 
 <div class="row" ng-if="applicationState.endpoint.mode.agentProxy && applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE'">
@@ -15,18 +15,18 @@
     !applicationState.endpoint.mode.agentProxy &&
     applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE'
   "
-  title-text="Information"
+  title-text="信息"
   dismiss-action="dismissInformationPanel('docker-dashboard-info-01')"
 >
   <span class="small">
     <p class="text-muted" ng-if="applicationState.endpoint.mode.role === 'MANAGER'">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px"></i>
-      Portainer is connected to a node that is part of a Swarm cluster. Some resources located on other nodes in the cluster might not be available for management, have a look at
-      <a href="http://portainer.readthedocs.io/en/stable/agent.html" target="_blank">our agent setup</a> for more details.
+      CotainerPeacock 连接到一个属于Swarm集群的节点。群集中其他节点上的某些资源可能无法进行管理。
+      <!-- <a href="http://portainer.readthedocs.io/en/stable/agent.html" target="_blank">our agent setup</a> for more details. -->
     </p>
     <p class="text-muted" ng-if="applicationState.endpoint.mode.role === 'WORKER'">
       <i class="fa fa-exclamation-circle orange-icon" aria-hidden="true" style="margin-right: 2px"></i>
-      Portainer is connected to a worker node. Swarm management features will not be available.
+      CotainerPeacock 已连接到工作节点。Swarm管理功能将不可用。
     </p>
   </span>
 </information-panel>
@@ -39,7 +39,7 @@
         <table class="table">
           <tbody>
             <tr>
-              <td>Environment</td>
+              <td>环境</td>
               <td>
                 {{ endpoint.Name }}
                 <span class="small text-muted space-left">
@@ -47,7 +47,7 @@
                 </span>
                 <span class="small text-muted">
                   - {{ info.Swarm && info.Swarm.NodeID !== '' ? 'Swarm' : 'Standalone' }} {{ info.ServerVersion }}
-                  <span ng-if="endpoint.Type === 2">+ <i class="fa fa-bolt" aria-hidden="true"></i> Agent</span></span
+                  <span ng-if="endpoint.Type === 2">+ <i class="fa fa-bolt" aria-hidden="true"></i> 代理</span></span
                 >
               </td>
             </tr>
@@ -56,13 +56,13 @@
               <td>{{ endpoint.URL | stripprotocol }}</td>
             </tr>
             <tr>
-              <td>Tags</td>
+              <td>标签</td>
               <td>{{ endpointTags }}</td>
             </tr>
             <tr ng-if="applicationState.endpoint.mode.provider === 'DOCKER_SWARM_MODE' && applicationState.endpoint.mode.role === 'MANAGER'">
               <td colspan="2">
                 <div class="btn-group" role="group" aria-label="...">
-                  <a ui-sref="docker.swarm.visualizer"><i class="fa fa-object-group space-right" aria-hidden="true"></i>Go to cluster visualizer</a>
+                  <a ui-sref="docker.swarm.visualizer"><i class="fa fa-object-group space-right" aria-hidden="true"></i>转到集群可视化</a>
                 </div>
               </td>
             </tr>
@@ -108,12 +108,12 @@
             <i class="fa fa-cubes"></i>
           </div>
           <div class="pull-right" style="padding-left: 5px">
-            <div><i class="fa fa-power-off space-right green-icon"></i>{{ containers | runningcontainers }} running</div>
-            <div><i class="fa fa-power-off space-right red-icon"></i>{{ containers | stoppedcontainers }} stopped</div>
+            <div><i class="fa fa-power-off space-right green-icon"></i>{{ containers | runningcontainers }} 正在运行</div>
+            <div><i class="fa fa-power-off space-right red-icon"></i>{{ containers | stoppedcontainers }} 已停止</div>
           </div>
           <div class="pull-right" style="padding-right: 5px">
-            <div><i class="fa fa-heartbeat space-right green-icon"></i>{{ containers | healthycontainers }} healthy</div>
-            <div><i class="fa fa-heartbeat space-right orange-icon"></i>{{ containers | unhealthycontainers }} unhealthy</div>
+            <div><i class="fa fa-heartbeat space-right green-icon"></i>{{ containers | healthycontainers }} 健康</div>
+            <div><i class="fa fa-heartbeat space-right orange-icon"></i>{{ containers | unhealthycontainers }} 不健康</div>
           </div>
           <div class="title">{{ containers.length }}</div>
           <div class="comment">{{ containers.length === 1 ? 'Container' : 'Containers' }}</div>

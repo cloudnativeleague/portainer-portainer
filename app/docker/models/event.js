@@ -14,149 +14,149 @@ function createEventDetails(event) {
     case 'container':
       switch (action) {
         case 'stop':
-          details = 'Container ' + eventAttr.name + ' stopped';
+          details = '容器' + eventAttr.name + '已停止';
           break;
         case 'destroy':
-          details = 'Container ' + eventAttr.name + ' deleted';
+          details = '容器' + eventAttr.name + '删除';
           break;
         case 'create':
-          details = 'Container ' + eventAttr.name + ' created';
+          details = '容器' + eventAttr.name + '创建';
           break;
         case 'start':
-          details = 'Container ' + eventAttr.name + ' started';
+          details = '容器' + eventAttr.name + '启动';
           break;
         case 'kill':
-          details = 'Container ' + eventAttr.name + ' killed';
+          details = '容器' + eventAttr.name + '终止';
           break;
         case 'die':
-          details = 'Container ' + eventAttr.name + ' exited with status code ' + eventAttr.exitCode;
+          details = '容器' + eventAttr.name + '退出，状态码：' + eventAttr.exitCode;
           break;
         case 'commit':
-          details = 'Container ' + eventAttr.name + ' committed';
+          details = '容器' + eventAttr.name + '提交';
           break;
         case 'restart':
-          details = 'Container ' + eventAttr.name + ' restarted';
+          details = '容器' + eventAttr.name + '重启';
           break;
         case 'pause':
-          details = 'Container ' + eventAttr.name + ' paused';
+          details = '容器' + eventAttr.name + '暂停';
           break;
         case 'unpause':
-          details = 'Container ' + eventAttr.name + ' unpaused';
+          details = '容器' + eventAttr.name + '未暂停';
           break;
         case 'attach':
-          details = 'Container ' + eventAttr.name + ' attached';
+          details = '容器' + eventAttr.name + '已接入';
           break;
         case 'detach':
-          details = 'Container ' + eventAttr.name + ' detached';
+          details = '容器' + eventAttr.name + '已分离';
           break;
         case 'copy':
-          details = 'Container ' + eventAttr.name + ' copied';
+          details = '容器' + eventAttr.name + '已复制';
           break;
         case 'export':
-          details = 'Container ' + eventAttr.name + ' exported';
+          details = '容器' + eventAttr.name + '已导出';
           break;
         case 'health_status':
-          details = 'Container ' + eventAttr.name + ' executed health status';
+          details = '容器' + eventAttr.name + '执行健康检查';
           break;
         case 'oom':
-          details = 'Container ' + eventAttr.name + ' goes in out of memory';
+          details = '容器' + eventAttr.name + '超出内存限制';
           break;
         case 'rename':
-          details = 'Container ' + eventAttr.name + ' renamed';
+          details = '容器' + eventAttr.name + '已重命名';
           break;
         case 'resize':
-          details = 'Container ' + eventAttr.name + ' resized';
+          details = '容器' + eventAttr.name + '已调整大小';
           break;
         case 'top':
-          details = 'Showed running processes for container ' + eventAttr.name;
+          details = '显示容器运行进程' + eventAttr.name;
           break;
         case 'update':
-          details = 'Container ' + eventAttr.name + ' updated';
+          details = '容器' + eventAttr.name + '已更新';
           break;
         case 'exec_create':
           details = 'Exec instance created';
           break;
         case 'exec_start':
-          details = 'Exec instance started';
+          details = '执行实例启动';
           break;
         case 'exec_die':
-          details = 'Exec instance exited';
+          details = '执行实例退出';
           break;
         default:
-          details = 'Unsupported event';
+          details = '不支持事件';
       }
       break;
     case 'image':
       switch (action) {
         case 'delete':
-          details = 'Image deleted';
+          details = '镜像已删除';
           break;
         case 'import':
-          details = 'Image ' + event.Actor.ID + ' imported';
+          details = '镜像' + event.Actor.ID + '已导入';
           break;
         case 'load':
-          details = 'Image ' + event.Actor.ID + ' loaded';
+          details = '镜像' + event.Actor.ID + '已加载';
           break;
         case 'tag':
-          details = 'New tag created for ' + eventAttr.name;
+          details = '为事件创建新标签' + eventAttr.name;
           break;
         case 'untag':
-          details = 'Image untagged';
+          details = '未打标签的镜像';
           break;
         case 'save':
-          details = 'Image ' + event.Actor.ID + ' saved';
+          details = '镜像' + event.Actor.ID + '已保存';
           break;
         case 'pull':
-          details = 'Image ' + event.Actor.ID + ' pulled';
+          details = '镜像' + event.Actor.ID + '已下载';
           break;
         case 'push':
-          details = 'Image ' + event.Actor.ID + ' pushed';
+          details = '镜像' + event.Actor.ID + '已暂停';
           break;
         default:
-          details = 'Unsupported event';
+          details = '不支持事件';
       }
       break;
     case 'network':
       switch (action) {
         case 'create':
-          details = 'Network ' + eventAttr.name + ' created';
+          details = '网络' + eventAttr.name + '已创建';
           break;
         case 'destroy':
-          details = 'Network ' + eventAttr.name + ' deleted';
+          details = '网络' + eventAttr.name + '已删除';
           break;
         case 'remove':
-          details = 'Network ' + eventAttr.name + ' removed';
+          details = '网络' + eventAttr.name + '已移出';
           break;
         case 'connect':
-          details = 'Container connected to ' + eventAttr.name + ' network';
+          details = '容器已连接到' + eventAttr.name + '网络';
           break;
         case 'disconnect':
-          details = 'Container disconnected from ' + eventAttr.name + ' network';
+          details = '容器已从' + eventAttr.name + '网络中断开连接';
           break;
         default:
-          details = 'Unsupported event';
+          details = '不支持事件';
       }
       break;
     case 'volume':
       switch (action) {
         case 'create':
-          details = 'Volume ' + event.Actor.ID + ' created';
+          details = '存储卷' + event.Actor.ID + '已创建';
           break;
         case 'destroy':
-          details = 'Volume ' + event.Actor.ID + ' deleted';
+          details = '存储卷' + event.Actor.ID + '已删除';
           break;
         case 'mount':
-          details = 'Volume ' + event.Actor.ID + ' mounted';
+          details = '存储卷' + event.Actor.ID + '已挂载';
           break;
         case 'unmount':
-          details = 'Volume ' + event.Actor.ID + ' unmounted';
+          details = '存储卷' + event.Actor.ID + '已卸载';
           break;
         default:
-          details = 'Unsupported event';
+          details = '不支持事件';
       }
       break;
     default:
-      details = 'Unsupported event';
+      details = '不支持事件';
   }
   return details + extra;
 }

@@ -77,3 +77,18 @@ Portainer supports "Current - 2 docker versions only. Prior versions may operate
 Portainer is licensed under the zlib license. See [LICENSE](./LICENSE) for reference.
 
 Portainer also contains code from open source projects. See [ATTRIBUTIONS.md](./ATTRIBUTIONS.md) for a list.
+
+# Build
+
+```sh
+$ yarn install
+$ yarn build
+$ docker build -t containerpeacock:1.0.0 -f build/linux/Dockerfile .
+```
+
+# Run
+
+```sh
+$ docker volume create portainer_data
+$ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.11.1
+```

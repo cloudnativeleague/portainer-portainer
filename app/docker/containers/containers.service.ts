@@ -82,7 +82,7 @@ export async function removeContainer(
       throw new PortainerError(data.message);
     }
   } catch (e) {
-    throw new PortainerError('Unable to remove container', e as Error);
+    throw new PortainerError('无法移出容器', e as Error);
   }
 }
 

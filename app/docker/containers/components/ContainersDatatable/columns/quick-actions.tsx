@@ -11,7 +11,7 @@ import type {
 import { EnvironmentStatus } from '@/portainer/environments/types';
 
 export const quickActions: Column<DockerContainer> = {
-  Header: 'Quick Actions',
+  Header: '快捷操作',
   id: 'actions',
   Cell: QuickActionsCell,
   disableFilters: true,

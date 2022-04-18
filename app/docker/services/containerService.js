@@ -37,7 +37,7 @@ function ContainerServiceFactory($q, Container, LogHelper, $timeout, EndpointPro
         deferred.resolve(container);
       })
       .catch(function error(err) {
-        deferred.reject({ msg: 'Unable to retrieve container information', err: err });
+        deferred.reject({ msg: '无法检索容器详细', err: err });
       });
 
     return deferred.promise;
@@ -53,7 +53,7 @@ function ContainerServiceFactory($q, Container, LogHelper, $timeout, EndpointPro
         deferred.resolve(containers);
       })
       .catch(function error(err) {
-        deferred.reject({ msg: 'Unable to retrieve containers', err: err });
+        deferred.reject({ msg: '无法检索容器', err: err });
       });
 
     return deferred.promise;
@@ -66,13 +66,13 @@ function ContainerServiceFactory($q, Container, LogHelper, $timeout, EndpointPro
       Container.resize({}, { id: id, height: height, width: width })
         .$promise.then(function success(data) {
           if (data.message) {
-            deferred.reject({ msg: 'Unable to resize tty of container ' + id, err: data.message });
+            deferred.reject({ msg: '无法重置容器大小 ' + id, err: data.message });
           } else {
             deferred.resolve(data);
           }
         })
         .catch(function error(err) {
-          deferred.reject({ msg: 'Unable to resize tty of container ' + id, err: err });
+          deferred.reject({ msg: '无法充值容器tty大小 ' + id, err: err });
         });
     }, timeout);
 
@@ -104,7 +104,7 @@ function ContainerServiceFactory($q, Container, LogHelper, $timeout, EndpointPro
         deferred.resolve(data);
       })
       .catch(function error(err) {
-        deferred.reject({ msg: 'Unable to create container', err: err });
+        deferred.reject({ msg: '无法创建容器', err: err });
       });
     return deferred.promise;
   };

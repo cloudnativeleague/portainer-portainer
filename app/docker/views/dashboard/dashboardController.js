@@ -80,7 +80,7 @@ angular.module('portainer.docker').controller('DashboardController', [
           $scope.offlineMode = isOfflineEndpoint(endpoint);
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to load dashboard data');
+          Notifications.error('失败', err, '无法加载仪表盘数据');
         });
     }
 

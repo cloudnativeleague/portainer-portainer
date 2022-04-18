@@ -36,7 +36,7 @@ angular.module('portainer.docker').controller('ImportImageController', [
         try {
           await ImageService.tagImage(id, image.fromImage);
         } catch (err) {
-          Notifications.error('Failure', err, 'Unable to tag image');
+          Notifications.error('失败', err, '无法创建镜像标签');
         }
       }
     }
@@ -58,12 +58,12 @@ angular.module('portainer.docker').controller('ImportImageController', [
             await tagImage(imageIds[1]);
             $state.go('docker.images.image', { id: imageIds[1] }, { reload: true });
           }
-          Notifications.success('Images successfully uploaded');
+          Notifications.success('镜像上传成功');
         } else {
-          Notifications.success('The uploaded tar file contained multiple images. The provided tag therefore has been ignored.');
+          Notifications.success('上载的tar文件包含多个镜像。因此，提供的标签已被忽略。');
         }
       } catch (err) {
-        Notifications.error('Failure', err, 'Unable to upload image');
+        Notifications.error('失败', err, '无法上载镜像');
       } finally {
         $scope.state.actionInProgress = false;
       }

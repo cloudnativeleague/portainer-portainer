@@ -1,10 +1,10 @@
 <rd-header>
-  <rd-header-title title-text="Teams">
+  <rd-header-title title-text="组">
     <a data-toggle="tooltip" title="Refresh" ui-sref="portainer.teams" ui-sref-opts="{reload: true}">
       <i class="fa fa-sync" aria-hidden="true"></i>
     </a>
   </rd-header-title>
-  <rd-header-content>Teams management</rd-header-content>
+  <rd-header-content>组管理</rd-header-content>
 </rd-header>
 
 <create-team-form ng-if="isAdmin && users" users="users" action-in-progress="state.actionInProgress" teams="teams" on-submit="(addTeam)"></create-team-form>

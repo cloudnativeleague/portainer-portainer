@@ -72,7 +72,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0 || !hasStoppedItemsSelected}
           >
             <i className="fa fa-play space-right" aria-hidden="true" />
-            Start
+            启动
           </Button>
         </Authorized>
 
@@ -83,7 +83,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0 || !hasRunningItemsSelected}
           >
             <i className="fa fa-stop space-right" aria-hidden="true" />
-            Stop
+            停止
           </Button>
         </Authorized>
 
@@ -94,7 +94,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0}
           >
             <i className="fa fa-bomb space-right" aria-hidden="true" />
-            Kill
+            终止
           </Button>
         </Authorized>
 
@@ -104,7 +104,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0}
           >
             <i className="fa fa-sync space-right" aria-hidden="true" />
-            Restart
+            重启
           </Button>
         </Authorized>
 
@@ -114,7 +114,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0 || !hasRunningItemsSelected}
           >
             <i className="fa fa-pause space-right" aria-hidden="true" />
-            Pause
+            暂停
           </Button>
         </Authorized>
 
@@ -124,7 +124,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0 || !hasPausedItemsSelected}
           >
             <i className="fa fa-play space-right" aria-hidden="true" />
-            Resume
+            恢复
           </Button>
         </Authorized>
 
@@ -135,7 +135,7 @@ export function ContainersDatatableActions({
             disabled={selectedItemCount === 0}
           >
             <i className="fa fa-trash-alt space-right" aria-hidden="true" />
-            Remove
+            移出
           </Button>
         </Authorized>
       </ButtonGroup>
@@ -145,7 +145,7 @@ export function ContainersDatatableActions({
           <Link to="docker.containers.new" className="space-left">
             <Button>
               <i className="fa fa-plus space-right" aria-hidden="true" />
-              Add container
+              添加容器
             </Button>
           </Link>
         </Authorized>
@@ -154,8 +154,8 @@ export function ContainersDatatableActions({
   );
 
   function onStartClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully started';
-    const errorMessage = 'Unable to start container';
+    const successMessage = '容器启动成功';
+    const errorMessage = '无法启动容器';
     executeActionOnContainerList(
       selectedItems,
       startContainer,
@@ -165,8 +165,8 @@ export function ContainersDatatableActions({
   }
 
   function onStopClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully stopped';
-    const errorMessage = 'Unable to stop container';
+    const successMessage = '容器停止成功';
+    const errorMessage = '无法停止容器';
     executeActionOnContainerList(
       selectedItems,
       stopContainer,
@@ -176,8 +176,8 @@ export function ContainersDatatableActions({
   }
 
   function onRestartClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully restarted';
-    const errorMessage = 'Unable to restart container';
+    const successMessage = '容器重启成功';
+    const errorMessage = '无法重启容器';
     executeActionOnContainerList(
       selectedItems,
       restartContainer,
@@ -187,8 +187,8 @@ export function ContainersDatatableActions({
   }
 
   function onKillClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully killed';
-    const errorMessage = 'Unable to kill container';
+    const successMessage = '容器终止成功';
+    const errorMessage = '无法终止容器';
     executeActionOnContainerList(
       selectedItems,
       killContainer,
@@ -198,8 +198,8 @@ export function ContainersDatatableActions({
   }
 
   function onPauseClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully paused';
-    const errorMessage = 'Unable to pause container';
+    const successMessage = '容器暂停成功';
+    const errorMessage = '无法暂停容器';
     executeActionOnContainerList(
       selectedItems,
       pauseContainer,
@@ -209,8 +209,8 @@ export function ContainersDatatableActions({
   }
 
   function onResumeClick(selectedItems: DockerContainer[]) {
-    const successMessage = 'Container successfully resumed';
-    const errorMessage = 'Unable to resume container';
+    const successMessage = '容器成功恢复';
+    const errorMessage = '无法恢复容器';
     executeActionOnContainerList(
       selectedItems,
       resumeContainer,
@@ -224,8 +224,8 @@ export function ContainersDatatableActions({
       (container) => container.Status === 'running'
     );
 
-    const runningTitle = isOneContainerRunning ? 'running' : '';
-    const title = `You are about to remove one or more ${runningTitle} containers.`;
+    const runningTitle = isOneContainerRunning ? '正在运行' : '';
+    const title = `你将会移出这些 ${runningTitle} 容器.`;
 
     confirmContainerDeletion(title, (result: string[]) => {
       if (!result) {
@@ -251,7 +251,7 @@ export function ContainersDatatableActions({
         notifications.success(successMessage, container.Names[0]);
       } catch (err) {
         notifications.error(
-          'Failure',
+          '失败',
           err as Error,
           `${errorMessage}:${container.Names[0]}`
         );
@@ -270,16 +270,9 @@ export function ContainersDatatableActions({
       try {
         setPortainerAgentTargetHeader(container.NodeName);
         await removeContainer(endpointId, container, cleanVolumes);
-        notifications.success(
-          'Container successfully removed',
-          container.Names[0]
-        );
+        notifications.success('容器移出成功', container.Names[0]);
       } catch (err) {
-        notifications.error(
-          'Failure',
-          err as Error,
-          'Unable to remove container'
-        );
+        notifications.error('失败', err as Error, '无法移出容器');
       }
     }
 

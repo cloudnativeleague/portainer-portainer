@@ -9,12 +9,12 @@ angular.module('portainer.docker').controller('SecretsController', [
       angular.forEach(selectedItems, function (secret) {
         SecretService.remove(secret.Id)
           .then(function success() {
-            Notifications.success('Secret successfully removed', secret.Name);
+            Notifications.success('密钥移出成功', secret.Name);
             var index = $scope.secrets.indexOf(secret);
             $scope.secrets.splice(index, 1);
           })
           .catch(function error(err) {
-            Notifications.error('Failure', err, 'Unable to remove secret');
+            Notifications.error('失败', err, '无法移出密钥');
           })
           .finally(function final() {
             --actionCount;

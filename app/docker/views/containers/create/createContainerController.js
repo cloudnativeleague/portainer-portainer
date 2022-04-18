@@ -584,7 +584,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           $scope.formValues.RegistryModel = model;
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve registry');
+          Notifications.error('失败', err, '无法检索镜像注册中心');
         });
     }
 
@@ -656,7 +656,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           loadFromContainerSysctls(d);
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve container');
+          Notifications.error('失败', err, '无法检索容器');
         });
     }
 
@@ -690,7 +690,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           });
         },
         function (e) {
-          Notifications.error('Failure', e, 'Unable to retrieve volumes');
+          Notifications.error('失败', e, '无法检索存储卷');
         }
       );
 
@@ -706,7 +706,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           }
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve networks');
+          Notifications.error('失败', err, '无法检索网络');
         });
 
       Container.query(
@@ -722,7 +722,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           }
         },
         function (e) {
-          Notifications.error('Failure', e, 'Unable to retrieve running containers');
+          Notifications.error('失败', e, '无法检索运行的容器');
         }
       );
 
@@ -739,7 +739,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           }
         })
         .catch(function error(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve engine details');
+          Notifications.error('失败', err, '无法检索引擎详情');
         });
 
       $scope.allowBindMounts = $scope.isAdminOrEndpointAdmin || endpoint.SecuritySettings.allowBindMountsForRegularUsers;
@@ -781,10 +781,10 @@ angular.module('portainer.docker').controller('CreateContainerController', [
         } else {
           await ContainerService.updateLimits($transition$.params().from, config);
           $scope.config = config;
-          Notifications.success('Limits updated');
+          Notifications.success('限制已更新');
         }
       } catch (err) {
-        Notifications.error('Failure', err, 'Update Limits fail');
+        Notifications.error('失败', err, '更新限制失败');
       }
     }
 
@@ -821,7 +821,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           .catch(notifyOnError);
 
         function notifyOnError(err) {
-          Notifications.error('Failure', err, 'Unable to retrieve containers');
+          Notifications.error('失败', err, '无法检索容器');
         }
       }
 
@@ -882,11 +882,11 @@ angular.module('portainer.docker').controller('CreateContainerController', [
           var deferred = $q.defer();
 
           ModalService.confirm({
-            title: 'Are you sure ?',
-            message: 'A container with the same name already exists. Portainer can automatically remove it and re-create one. Do you want to replace it?',
+            title: '确定吗 ?',
+            message: '已存在同名的容器。Portainer可以自动删除它并重新创建一个。你想替换它吗？',
             buttons: {
               confirm: {
-                label: 'Replace',
+                label: '替换',
                 className: 'btn-danger',
               },
             },
@@ -969,17 +969,17 @@ angular.module('portainer.docker').controller('CreateContainerController', [
         return deferred.promise;
 
         function notifyOnRemoval() {
-          Notifications.success('Container Removed', oldContainer.Id);
+          Notifications.success('容器移出', oldContainer.Id);
           deferred.resolve();
         }
 
         function notifyOnRemoveError(err) {
-          deferred.reject({ msg: 'Unable to remove container', err: err });
+          deferred.reject({ msg: '无法移出容器', err: err });
         }
       }
 
       function notifyOnError(err) {
-        Notifications.error('Failure', err, 'Unable to create container');
+        Notifications.error('失败', err, '无法创建容器');
       }
 
       function validateAccessControl() {
@@ -988,7 +988,7 @@ angular.module('portainer.docker').controller('CreateContainerController', [
       }
 
       function onSuccess() {
-        Notifications.success('Container successfully created');
+        Notifications.success('容器创建成功');
         $state.go('docker.containers', {}, { reload: true });
       }
     }

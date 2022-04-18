@@ -6,7 +6,7 @@ import { EnvironmentStatus } from '@/portainer/environments/types';
 import type { DockerContainer } from '@/docker/containers/types';
 
 export const image: Column<DockerContainer> = {
-  Header: 'Image',
+  Header: '镜像',
   accessor: 'Image',
   id: 'image',
   disableFilters: true,
