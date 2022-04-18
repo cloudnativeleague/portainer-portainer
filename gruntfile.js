@@ -54,6 +54,9 @@ module.exports = function (grunt) {
   grunt.task.registerTask('release', 'release:<platform>:<arch>', function (platform = 'linux', a = arch) {
     grunt.task.run(['env:prod', 'clean:all', `shell:build_binary:${platform}:${a}`, `download_binaries:${platform}:${a}`, 'webpack:prod']);
   });
+  grunt.task.registerTask('releaselocal', 'releaselocal:<platform>:<arch>', function (platform = 'linux', a = arch) {
+    grunt.task.run(['env:prod', 'clean:client', `shell:build_binary:${platform}:${a}`, `download_binaries:${platform}:${a}`, 'webpack:prod']);
+  });
 
   grunt.task.registerTask('devopsbuild', 'devopsbuild:<platform>:<arch>:<env>', function (platform, a = arch, env = 'prod') {
     grunt.task.run([

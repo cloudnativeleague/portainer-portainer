@@ -13,7 +13,7 @@ function download_binary() {
     
     if [ "${PLATFORM}" == 'linux' ] && [ "${ARCH}" == 'amd64' ]; then
         # wget -O "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
-        curl -x socks5h://127.0.0.1:1080 -L -o "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
+        curl --socks5 "127.0.0.1:1080" -L -o "dist/docker-compose" "https://github.com/portainer/docker-compose-linux-amd64-static-binary/releases/download/${BINARY_VERSION}/docker-compose"
         chmod +x "dist/docker-compose"
         return
     fi
@@ -47,7 +47,8 @@ function download_plugin() {
         TARGET_FILENAME="$TARGET_FILENAME.exe"
     fi
     
-    wget -O "dist/$TARGET_FILENAME" "https://github.com/docker/compose-cli/releases/download/v$PLUGIN_VERSION/$FILENAME"
+    # wget -O "dist/$TARGET_FILENAME" "https://github.com/docker/compose-cli/releases/download/v$PLUGIN_VERSION/$FILENAME"
+    curl --socks5 "127.0.0.1:1080" -L -o "dist/$TARGET_FILENAME" "https://github.com/docker/compose-cli/releases/download/v$PLUGIN_VERSION/$FILENAME"
     chmod +x "dist/$TARGET_FILENAME"
 }
 

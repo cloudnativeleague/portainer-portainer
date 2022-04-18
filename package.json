@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "build": "grunt build",
-    "build:clean": "grunt clean:client && grunt build",
+    "build:clean": "grunt clean:all && grunt build",
+    "build:cleanclient": "grunt clean:client && grunt build",
     "build:server": "grunt clean:server && grunt build:server",
     "build:client": "grunt clean:client && grunt build:client",
     "prebuild:docs": "go install github.com/swaggo/swag/cmd/swag@v1.7.1",
