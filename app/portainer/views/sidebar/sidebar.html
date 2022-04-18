@@ -9,7 +9,7 @@
   </div>
   <div class="sidebar-content">
     <ul class="sidebar">
-      <sidebar-menu-item path="portainer.home" icon-class="fa-home fa-fw" class-name="sidebar-list" data-cy="portainerSidebar-home">Home</sidebar-menu-item>
+      <sidebar-menu-item path="portainer.home" icon-class="fa-home fa-fw" class-name="sidebar-list" data-cy="portainerSidebar-home">主页</sidebar-menu-item>
 
       <li class="sidebar-title endpoint-name" ng-if="applicationState.endpoint.name">
         <span class="fa fa-plug space-right"></span>{{ applicationState.endpoint.name }}
@@ -66,7 +66,7 @@
         <sidebar-menu-item path="edge.jobs" icon-class="fa-clock fa-fw" class-name="sidebar-list" data-cy="portainerSidebar-edgeJobs">边缘任务</sidebar-menu-item>
       </sidebar-section>
 
-      <sidebar-section ng-if="isAdmin || isTeamLeader" title="Settings">
+      <sidebar-section ng-if="isAdmin || isTeamLeader" title="设置">
         <sidebar-menu
           icon-class="fa-users fa-fw"
           label="用户"
@@ -94,7 +94,7 @@
             注册中心</sidebar-menu-item
           >
 
-          <sidebar-menu label="Authentication logs" icon-class="fa-history fa-fw" path="portainer.authLogs" is-sidebar-open="toggle" children-paths="['portainer.activityLogs']">
+          <sidebar-menu label="认证日志" icon-class="fa-history fa-fw" path="portainer.authLogs" is-sidebar-open="toggle" children-paths="['portainer.activityLogs']">
             <sidebar-menu-item path="portainer.activityLogs" class-name="sidebar-sublist" data-cy="portainerSidebar-activityLogs">活动日志</sidebar-menu-item>
           </sidebar-menu>
 
@@ -109,7 +109,7 @@
             <sidebar-menu-item path="portainer.settings.edgeCompute" class-name="sidebar-sublist" data-cy="portainerSidebar-edge-compute">边缘计算</sidebar-menu-item>
 
             <div class="sidebar-sublist">
-              <a href="https://www.portainer.io/community_help" target="_blank" data-cy="portainerSidebar-help">Help / About</a>
+              <!-- <a href="https://www.portainer.io/community_help" target="_blank" data-cy="portainerSidebar-help">Help / About</a> -->
             </div>
           </sidebar-menu>
         </div>

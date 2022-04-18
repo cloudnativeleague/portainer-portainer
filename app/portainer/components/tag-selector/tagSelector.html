@@ -1,5 +1,5 @@
 <div ng-show="$ctrl.model.length > 0" class="col-sm-12" style="padding: 0; margin-bottom: 15px">
-  <label class="col-sm-3 col-lg-2 control-label text-left"> Selected tags </label>
+  <label class="col-sm-3 col-lg-2 control-label text-left"> 选择标签 </label>
   <div class="col-sm-9 col-lg-10" style="padding-top: 4px">
     <span class="tag space-right interactive" ng-repeat="tag in $ctrl.state.selectedTags" ng-click="$ctrl.removeTag(tag)">
       {{ tag.Name }}
@@ -10,7 +10,7 @@
   </div>
 </div>
 <div class="col-sm-12" style="padding: 0">
-  <label for="tags" class="col-sm-3 col-lg-2 control-label text-left"> Tags </label>
+  <label for="tags" class="col-sm-3 col-lg-2 control-label text-left"> 标签 </label>
   <div class="col-sm-9 col-lg-10" id="scrollable-dropdown-menu" ng-if="$ctrl.allowCreate || $ctrl.tags.length > 0">
     <input
       type="text"
@@ -27,9 +27,9 @@
     />
   </div>
   <div class="col-sm-9 col-lg-10" ng-if="!$ctrl.allowCreate && $ctrl.tags.length === 0">
-    <span class="small text-muted"> No tags available. </span>
+    <span class="small text-muted"> 没有可用标签 </span>
   </div>
 </div>
 <div class="col-sm-offset-3 col-lg-offset-2 col-sm-12" ng-if="!$ctrl.allowCreate && $ctrl.state.noResult" style="margin-top: 2px">
-  <span class="small text-muted"> No tags matching your filter. </span>
+  <span class="small text-muted"> 没有匹配你筛选的标签 </span>
 </div>

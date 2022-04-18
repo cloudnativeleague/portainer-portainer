@@ -8,7 +8,7 @@
       <div class="actionBar">
         <div>
           <button type="button" class="btn btn-sm btn-primary" ui-sref="docker.templates.new" ng-if="$ctrl.showAddAction">
-            <i class="fa fa-plus space-right" aria-hidden="true"></i>Add template
+            <i class="fa fa-plus space-right" aria-hidden="true"></i>添加模板
           </button>
           <span ng-class="{ 'pull-right': $ctrl.showAddAction }" style="width: 25%">
             <ui-select ng-model="$ctrl.state.selectedCategory">
@@ -23,7 +23,7 @@
         </div>
 
         <div class="small text-muted" style="margin: 15px 0 0 5px">
-          <label for="show_stacks" class="control-label text-left"> Show container templates </label>
+          <label for="show_stacks" class="control-label text-left"> 显示容器模板 </label>
           <label class="switch" style="margin-left: 20px">
             <input type="checkbox" name="show_stacks" ng-model="$ctrl.state.showContainerTemplates" ng-change="$ctrl.updateCategories()" /><i></i>
           </label>
@@ -51,12 +51,12 @@
           on-select="($ctrl.selectAction)"
         >
           <template-item-actions ng-if="template.Type === 2 || template.Type === 3">
-            <button ng-click="$event.stopPropagation(); $ctrl.duplicateTemplate(template)" class="btn btn-primary btn-xs"> Copy as Custom </button>
+            <button ng-click="$event.stopPropagation(); $ctrl.duplicateTemplate(template)" class="btn btn-primary btn-xs"> 复制为模板 </button>
           </template-item-actions>
         </template-item>
-        <div ng-if="!$ctrl.templates" class="text-center text-muted"> Loading... </div>
+        <div ng-if="!$ctrl.templates" class="text-center text-muted"> 正在加载... </div>
         <div ng-if="($ctrl.templates | filter: $ctrl.filterByType | filter: $ctrl.filterByCategory | filter: $ctrl.state.textFilter).length === 0" class="text-center text-muted">
-          No templates available.
+          没有可用模板
         </div>
       </div>
     </rd-widget-body>
