@@ -47,10 +47,10 @@ function SettingsAuthenticationController($q, $scope, $state, Notifications, Set
   };
 
   $scope.authOptions = [
-    { id: 'auth_internal', icon: 'fa fa-users', label: 'Internal', description: 'Internal authentication mechanism', value: 1 },
-    { id: 'auth_ldap', icon: 'fa fa-users', label: 'LDAP', description: 'LDAP authentication', value: 2 },
-    { id: 'auth_ad', icon: 'fab fa-microsoft', label: 'Microsoft Active Directory', description: 'AD authentication', value: 4, feature: FeatureId.HIDE_INTERNAL_AUTH },
-    { id: 'auth_oauth', icon: 'fa fa-users', label: 'OAuth', description: 'OAuth authentication', value: 3 },
+    { id: 'auth_internal', icon: 'fa fa-users', label: '内部', description: '内部认证机制', value: 1 },
+    { id: 'auth_ldap', icon: 'fa fa-users', label: 'LDAP', description: 'LDAP认证', value: 2 },
+    { id: 'auth_ad', icon: 'fab fa-microsoft', label: 'Microsoft活动目录', description: 'AD认证', value: 4, feature: FeatureId.HIDE_INTERNAL_AUTH },
+    { id: 'auth_oauth', icon: 'fa fa-users', label: 'OAuth', description: 'OAuth认证', value: 3 },
   ];
 
   $scope.onChangeAuthMethod = function onChangeAuthMethod(value) {

@@ -31,7 +31,7 @@ export function CreateTeamForm({ users, teams, onSubmit }: Props) {
     <div className="row">
       <div className="col-lg-12 col-md-12 col-xs-12">
         <Widget>
-          <WidgetTitle icon="fa-plus" title="Add a new team" />
+          <WidgetTitle icon="fa-plus" title="添加小组" />
           <WidgetBody>
             <Formik
               initialValues={initialValues}
@@ -54,7 +54,7 @@ export function CreateTeamForm({ users, teams, onSubmit }: Props) {
                 >
                   <FormControl
                     inputId="team_name"
-                    label="Name"
+                    label="名称"
                     errors={errors.name}
                   >
                     <Field
@@ -70,8 +70,8 @@ export function CreateTeamForm({ users, teams, onSubmit }: Props) {
                   {users.length > 0 && (
                     <FormControl
                       inputId="users-input"
-                      label="Select team leader(s)"
-                      tooltip="You can assign one or more leaders to this team. Team leaders can manage their teams users and resources."
+                      label="选择的小组领导"
+                      tooltip="您可以为该团队指派一名或多名领导。团队领导者可以管理他们的团队、用户和资源。"
                       errors={errors.leaders}
                     >
                       <UsersSelector
@@ -82,7 +82,7 @@ export function CreateTeamForm({ users, teams, onSubmit }: Props) {
                         users={users}
                         dataCy="team-teamLeaderSelect"
                         inputId="users-input"
-                        placeholder="Select one or more team leaders"
+                        placeholder="选择一个或多个小组领导"
                       />
                     </FormControl>
                   )}
@@ -93,13 +93,13 @@ export function CreateTeamForm({ users, teams, onSubmit }: Props) {
                         disabled={!isValid}
                         dataCy="team-createTeamButton"
                         isLoading={isSubmitting}
-                        loadingText="Creating team..."
+                        loadingText="正在创建小组..."
                       >
                         <i
                           className="fa fa-plus space-right"
                           aria-hidden="true"
                         />
-                        Create team
+                        创建小组
                       </LoadingButton>
                     </div>
                   </div>

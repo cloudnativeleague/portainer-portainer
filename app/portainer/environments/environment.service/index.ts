@@ -166,7 +166,7 @@ export async function updateEndpoint(
 
     return endpoint;
   } catch (e) {
-    throw parseAxiosError(e as Error, 'Unable to update environment');
+    throw parseAxiosError(e as Error, '无法更新环境');
   }
 }
 
@@ -231,6 +231,6 @@ export async function trustEndpoint(id: EnvironmentId) {
     });
     return endpoint;
   } catch (e) {
-    throw parseAxiosError(e as Error, 'Unable to update environment');
+    throw parseAxiosError(e as Error, '无法更新环境');
   }
 }

@@ -12,10 +12,10 @@
           ng-disabled="$ctrl.state.selectedItemCount === 0"
           ng-click="$ctrl.removeAction($ctrl.state.selectedItems)"
         >
-          <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>Remove
+          <i class="fa fa-trash-alt space-right" aria-hidden="true"></i>移除
         </button>
         <button type="button" class="btn btn-sm btn-primary" ui-sref="portainer.registries.new" data-cy="add-registry">
-          <i class="fa fa-plus space-right" aria-hidden="true"></i>Add registry
+          <i class="fa fa-plus space-right" aria-hidden="true"></i>添加注册中心
         </button>
       </div>
       <div class="searchBar">
@@ -25,7 +25,7 @@
           class="searchInput"
           ng-model="$ctrl.state.textFilter"
           ng-change="$ctrl.onTextFilterChange()"
-          placeholder="Search..."
+          placeholder="搜索..."
           auto-focus
           ng-model-options="{ debounce: 300 }"
         />
@@ -40,7 +40,7 @@
                   <label for="select_all"></label>
                 </span>
                 <a ng-click="$ctrl.changeOrderBy('Name')">
-                  Name
+                  名称
                   <i class="fa fa-sort-alpha-down" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Name' && !$ctrl.state.reverseOrder"></i>
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'Name' && $ctrl.state.reverseOrder"></i>
                 </a>
@@ -52,7 +52,7 @@
                   <i class="fa fa-sort-alpha-up" aria-hidden="true" ng-if="$ctrl.state.orderBy === 'URL' && $ctrl.state.reverseOrder"></i>
                 </a>
               </th>
-              <th>Actions</th>
+              <th>动作</th>
             </tr>
           </thead>
           <tbody>
@@ -62,7 +62,7 @@
                   <input id="select_{{ $index }}" type="checkbox" disabled />
                   <label for="select_{{ $index }}"></label>
                 </span>
-                <span>DockerHub (anonymous)</span>
+                <span>DockerHub (匿名)</span>
               </td>
               <td> docker.io </td>
               <td> - </td>
@@ -78,32 +78,32 @@
                 </span>
                 <a ui-sref="portainer.registries.registry({id: item.Id})" ng-if="$ctrl.enableGoToLink(item)">{{ item.Name }}</a>
                 <span ng-if="!$ctrl.enableGoToLink(item)">{{ item.Name }}</span>
-                <span ng-if="item.Authentication" style="margin-left: 5px" class="label label-info image-tag">authentication-enabled</span>
+                <span ng-if="item.Authentication" style="margin-left: 5px" class="label label-info image-tag">启用的认证</span>
               </td>
               <td>
                 {{ item.URL }}
               </td>
               <td>
-                <a ng-if="$ctrl.canManageAccess(item)" ng-click="$ctrl.redirectToManageAccess(item)"> <i class="fa fa-users" aria-hidden="true"></i> Manage access </a>
-                <be-feature-indicator feature="$ctrl.limitedFeature" ng-if="$ctrl.canBrowse(item)">
-                  <span class="text-muted space-left" style="padding-right: 5px"> <i class="fa fa-search" aria-hidden="true"></i> Browse</span>
-                </be-feature-indicator>
+                <a ng-if="$ctrl.canManageAccess(item)" ng-click="$ctrl.redirectToManageAccess(item)"> <i class="fa fa-users" aria-hidden="true"></i> 访问管理 </a>
+                <!-- <be-feature-indicator feature="$ctrl.limitedFeature" ng-if="$ctrl.canBrowse(item)">
+                  <span class="text-muted space-left" style="padding-right: 5px"> <i class="fa fa-search" aria-hidden="true"></i> 浏览</span>
+                </be-feature-indicator> -->
 
                 <span ng-if="!$ctrl.canBrowse(item) && !$ctrl.canManageAccess(item)"> - </span>
               </td>
             </tr>
             <tr ng-if="!$ctrl.dataset">
-              <td colspan="3" class="text-center text-muted">Loading...</td>
+              <td colspan="3" class="text-center text-muted">加载中...</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="footer" ng-if="$ctrl.dataset">
-        <div class="infoBar" ng-if="$ctrl.state.selectedItemCount !== 0"> {{ $ctrl.state.selectedItemCount }} item(s) selected </div>
+        <div class="infoBar" ng-if="$ctrl.state.selectedItemCount !== 0"> {{ $ctrl.state.selectedItemCount }} 已选中条目 </div>
         <div class="paginationControls">
           <form class="form-inline">
             <span class="limitSelector">
-              <span style="margin-right: 5px"> Items per page </span>
+              <span style="margin-right: 5px"> 每页条目 </span>
               <select class="form-control" ng-model="$ctrl.state.paginatedItemLimit" ng-change="$ctrl.changePaginationLimit()" data-cy="component-paginationSelect">
                 <option value="0">All</option>
                 <option value="10">10</option>

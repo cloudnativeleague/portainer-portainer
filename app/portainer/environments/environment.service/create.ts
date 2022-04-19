@@ -34,7 +34,7 @@ export async function createLocalEndpoint(
       { url: endpointUrl, publicUrl, groupId, tagIds }
     );
   } catch (err) {
-    throw new PortainerError('Unable to create environment', err as Error);
+    throw new PortainerError('无法创建环境', err as Error);
   }
 }
 
@@ -49,7 +49,7 @@ export async function createLocalKubernetesEndpoint(
       { tagIds, groupId: 1, tls: { skipClientVerify: true, skipVerify: true } }
     );
   } catch (err) {
-    throw new PortainerError('Unable to create environment', err as Error);
+    throw new PortainerError('无法创建环境', err as Error);
   }
 }
 
@@ -113,7 +113,7 @@ export async function createRemoteEndpoint(
       url: endpointUrl,
     });
   } catch (err) {
-    throw new PortainerError('Unable to create environment', err as Error);
+    throw new PortainerError('无法创建环境', err as Error);
   }
 }
 

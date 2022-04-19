@@ -1,17 +1,18 @@
 <div class="col-sm-12 form-section-title ldap-custom-admin-group-title" ng-style="$ctrl.isLimitedFeatureSelfContained && { 'padding-bottom': '15px' }">
-  Auto-populate team admins <be-feature-indicator feature="$ctrl.limitedFeatureId" class="space-left" ng-if="$ctrl.isLimitedFeatureSelfContained"></be-feature-indicator>
+  自动填充团队管理员
+  <!-- <be-feature-indicator feature="$ctrl.limitedFeatureId" class="space-left" ng-if="$ctrl.isLimitedFeatureSelfContained"></be-feature-indicator> -->
 </div>
 
 <rd-widget ng-repeat="config in $ctrl.settings.AdminGroupSearchSettings | limitTo: (1 - $ctrl.settings.AdminGroupSearchSettings)">
   <rd-widget-body>
     <div class="form-group m-b-10" ng-if="$index > 0">
-      <span class="col-sm-12 text-muted small"> Extra search configuration </span>
+      <span class="col-sm-12 text-muted small"> 其他搜索配置 </span>
     </div>
 
     <div class="form-group">
       <label for="ldap_admin_group_basedn_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Base DN
-        <portainer-tooltip position="bottom" message="The distinguished name of the element from which the LDAP server will search for groups."></portainer-tooltip>
+        基组DN
+        <portainer-tooltip position="bottom" message="LDAP服务器将从中搜索组的元素的可分辨名称。"></portainer-tooltip>
       </label>
       <div class="col-sm-8 col-md-4">
         <input
@@ -28,7 +29,7 @@
       </div>
 
       <label for="ldap_admin_group_att_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Membership Attribute
+        组成员属性
         <portainer-tooltip position="bottom" message="LDAP attribute which denotes the group membership."></portainer-tooltip>
       </label>
       <div class="col-sm-8 col-md-4">
@@ -47,8 +48,8 @@
     </div>
     <div class="form-group">
       <label for="ldap_admin_group_filter_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Filter
-        <portainer-tooltip position="bottom" message="The LDAP search filter used to select group elements, optional."></portainer-tooltip>
+        组筛选器
+        <portainer-tooltip position="bottom" message="用于选择组元素的LDAP搜索筛选器（可选）。"></portainer-tooltip>
       </label>
       <div ng-class="{ 'col-sm-7 col-md-9': $index, 'col-sm-8 col-md-10': !$index }">
         <input
@@ -81,7 +82,7 @@
       limited-feature-class=" {{ $ctrl.isLimitedFeatureSelfContained && 'limited-be' }}"
       limited-feature-disabled
     >
-      <i class="fa fa-plus-circle" aria-hidden="true"></i> add group search configuration
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>添加组搜索配置
     </button>
   </div>
   <div class="col-sm-12 m-t-10">
@@ -94,15 +95,15 @@
       ng-disabled="{{ $ctrl.isLimitedFeatureSelfContained }}"
       limited-feature-tabindex="-1"
     >
-      Fetch Admin Group(s)
+      获取管理员组
     </button>
-    <span ng-if="$ctrl.groups && $ctrl.groups.length === 0" class="m-l-30"> <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i> No groups found</span>
+    <span ng-if="$ctrl.groups && $ctrl.groups.length === 0" class="m-l-30"> <i class="fa fa-exclamation-triangle text-warning" aria-hidden="true"></i> 没有发现可用组</span>
   </div>
 </div>
 
 <div class="form-group">
   <div class="col-sm-12">
-    <label for="admin-auto-populate" class="control-label text-left text-muted" ng-class="{ 'text-muted': !$ctrl.enableAssignAdminGroup }"> Assign admin rights to group(s) </label>
+    <label for="admin-auto-populate" class="control-label text-left text-muted" ng-class="{ 'text-muted': !$ctrl.enableAssignAdminGroup }"> 给组分配管理员权限 </label>
     <label class="switch m-l-20" ng-class="{ 'business limited': $ctrl.isLimitedFeatureSelfContained }">
       <input id="admin-auto-populate" ng-disabled="!$ctrl.enableAssignAdminGroup" name="admin-auto-populate" type="checkbox" ng-model="$ctrl.settings.AdminAutoPopulate" /><i></i>
     </label>
@@ -111,7 +112,7 @@
 
 <div class="form-group" ng-if="$ctrl.settings.AdminAutoPopulate">
   <div class="col-sm-12">
-    <label for="group-access" class="control-label text-left"> Select Group(s) </label>
+    <label for="group-access" class="control-label text-left"> 选择组 </label>
     <span
       class="m-l-20"
       isteven-multi-select

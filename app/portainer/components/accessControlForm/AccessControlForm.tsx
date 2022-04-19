@@ -50,8 +50,8 @@ export function AccessControlForm({ values, onChange, hideTitle }: Props) {
           <SwitchField
             checked={values.accessControlEnabled}
             name="ownership"
-            label="Enable access control"
-            tooltip="When enabled, you can restrict the access and management of this resource."
+            label="启用访问控制"
+            tooltip="启用后，可以限制对此资源的访问和管理。"
             onChange={(accessControlEnabled) =>
               handleChange({ accessControlEnabled })
             }
@@ -86,7 +86,7 @@ export function AccessControlForm({ values, onChange, hideTitle }: Props) {
                   teams={teams}
                   overrideTooltip={
                     !isAdmin && teams.length > 1
-                      ? 'As you are a member of multiple teams, you can select which teams(s) will be able to manage this resource.'
+                      ? '由于您是多个团队的成员，您可以选择哪些团队能够管理此资源。'
                       : undefined
                   }
                   onChange={(authorizedTeams) =>
@@ -119,14 +119,14 @@ function adminOptions() {
       'access_administrators',
       ownershipIcon('administrators'),
       'Administrators',
-      'I want to restrict the management of this resource to administrators only',
+      '我想将此资源的管理仅限于管理员',
       RCO.ADMINISTRATORS
     ),
     buildOption(
       'access_restricted',
       ownershipIcon('restricted'),
       'Restricted',
-      'I want to restrict the management of this resource to a set of users and/or teams',
+      '我想将此资源的管理限制为一组用户和/或团队',
       RCO.RESTRICTED
     ),
   ];
@@ -137,7 +137,7 @@ function nonAdminOptions(teams?: Team[]) {
       'access_private',
       ownershipIcon('private'),
       'Private',
-      'I want to this resource to be manageable by myself only',
+      '我希望这个资源只能由我自己管理',
       RCO.PRIVATE
     ),
     teams &&
@@ -147,8 +147,8 @@ function nonAdminOptions(teams?: Team[]) {
         ownershipIcon('restricted'),
         'Restricted',
         teams.length === 1
-          ? `I want any member of my team (${teams[0].Name})  to be able to manage this resource`
-          : 'I want to restrict the management of this resource to one or more of my teams',
+          ? `我想我小组的任何成员 (${teams[0].Name})  都能够管理资源`
+          : '我想将此资源的管理限制在我的一个或多个团队中',
         RCO.RESTRICTED
       ),
   ]);

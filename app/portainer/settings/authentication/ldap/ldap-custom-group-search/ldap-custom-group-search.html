@@ -1,22 +1,22 @@
-<div class="col-sm-12 form-section-title" style="float: initial"> Group search configurations </div>
+<div class="col-sm-12 form-section-title" style="float: initial"> 组搜索配置 </div>
 
 <rd-widget ng-repeat="config in $ctrl.settings | limitTo: (1 - $ctrl.settings)" style="display: block; margin-bottom: 10px">
   <rd-widget-body>
     <div class="form-group" ng-if="$index > 0" style="margin-bottom: 10px">
-      <span class="col-sm-12 text-muted small"> Extra search configuration </span>
+      <span class="col-sm-12 text-muted small"> 其他搜索配置 </span>
     </div>
 
     <div class="form-group">
       <label for="ldap_group_basedn_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Base DN
-        <portainer-tooltip position="bottom" message="The distinguished name of the element from which the LDAP server will search for groups."></portainer-tooltip>
+        基组DN
+        <portainer-tooltip position="bottom" message="LDAP服务器将从中搜索组的元素的可分辨名称。"></portainer-tooltip>
       </label>
       <div class="col-sm-8 col-md-4">
         <input type="text" class="form-control" id="ldap_group_basedn_{{ $index }}" ng-model="config.GroupBaseDN" placeholder="dc=ldap,dc=domain,dc=tld" />
       </div>
 
       <label for="ldap_group_att_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Membership Attribute
+        组成员属性
         <portainer-tooltip position="bottom" message="LDAP attribute which denotes the group membership."></portainer-tooltip>
       </label>
       <div class="col-sm-8 col-md-4">
@@ -25,8 +25,8 @@
     </div>
     <div class="form-group">
       <label for="ldap_group_filter_{{ $index }}" class="col-sm-4 col-md-2 control-label text-left">
-        Group Filter
-        <portainer-tooltip position="bottom" message="The LDAP search filter used to select group elements, optional."></portainer-tooltip>
+        组筛选器
+        <portainer-tooltip position="bottom" message="用于选择组元素的LDAP搜索筛选器（可选）。"></portainer-tooltip>
       </label>
       <div ng-class="{ 'col-sm-7 col-md-9': $index, 'col-sm-8 col-md-10': !$index }">
         <input type="text" class="form-control" id="ldap_group_filter_{{ $index }}" ng-model="config.GroupFilter" placeholder="(objectClass=account)" />
@@ -42,9 +42,7 @@
 
 <div class="form-group" style="margin-top: 10px">
   <div class="col-sm-12">
-    <button class="label label-default interactive" style="border: 0" ng-click="$ctrl.onAddClick()">
-      <i class="fa fa-plus-circle" aria-hidden="true"></i> add group search configuration
-    </button>
+    <button class="label label-default interactive" style="border: 0" ng-click="$ctrl.onAddClick()"> <i class="fa fa-plus-circle" aria-hidden="true"></i> 添加组搜索配置 </button>
   </div>
   <div class="col-sm-12" style="margin-top: 10px">
     <button
@@ -56,9 +54,9 @@
       limited-feature-disabled
       limited-feature-class="limited-be"
     >
-      Display User/Group matching
+      显示用户/组匹配
     </button>
-    <be-feature-indicator feature="$ctrl.limitedFeatureId" class="space-left"></be-feature-indicator>
+    <!-- <be-feature-indicator feature="$ctrl.limitedFeatureId" class="space-left"></be-feature-indicator> -->
   </div>
 </div>
 
