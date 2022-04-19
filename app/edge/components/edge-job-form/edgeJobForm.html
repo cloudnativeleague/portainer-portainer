@@ -1,8 +1,8 @@
 <form class="form-horizontal" name="edgeJobForm">
-  <div class="col-sm-12 form-section-title"> Edge job configuration </div>
+  <div class="col-sm-12 form-section-title"> 边缘计算任务配置 </div>
   <!-- name-input -->
   <div class="form-group">
-    <label for="edgejob_name" class="col-sm-1 control-label text-left">Name</label>
+    <label for="edgejob_name" class="col-sm-1 control-label text-left">名称</label>
     <div class="col-sm-11">
       <input
         type="text"
@@ -20,15 +20,15 @@
   <div class="form-group" ng-show="edgeJobForm.edgejob_name.$invalid">
     <div class="col-sm-12 small text-warning">
       <div ng-messages="edgeJobForm.edgejob_name.$error">
-        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
-        <p ng-message="pattern"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Allowed characters are: [a-zA-Z0-9_.-]</p>
+        <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 此字段必须填写.</p>
+        <p ng-message="pattern"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>允许的字符: [a-zA-Z0-9_.-]</p>
       </div>
     </div>
   </div>
   <!-- !name-input -->
   <!-- cron-input -->
   <!-- edge-job-method-select -->
-  <div class="col-sm-12 form-section-title"> Edge job configuration </div>
+  <div class="col-sm-12 form-section-title">边缘计算任务配置 </div>
   <div class="form-group"></div>
   <div class="form-group" style="margin-bottom: 0">
     <div class="boxselector_wrapper">
@@ -37,9 +37,9 @@
         <label for="config_basic">
           <div class="boxselector_header">
             <i class="fa fa-calendar-alt" aria-hidden="true" style="margin-right: 2px"></i>
-            Basic configuration
+            基本配置
           </div>
-          <p>Select date from calendar</p>
+          <p>从日历中选择日期</p>
         </label>
       </div>
       <div>
@@ -47,9 +47,9 @@
         <label for="config_advanced">
           <div class="boxselector_header">
             <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px"></i>
-            Advanced configuration
+            高级配置
           </div>
-          <p>Write your own cron rule</p>
+          <p>编写自定义cron规则</p>
         </label>
       </div>
     </div>
@@ -58,7 +58,7 @@
   <!-- basic-edge-job -->
   <div ng-if="$ctrl.formValues.cronMethod === 'basic'">
     <div class="form-group">
-      <label for="recurring" class="col-sm-2 control-label text-left">Recurring Edge job</label>
+      <label for="recurring" class="col-sm-2 control-label text-left">循环边缘计算任务</label>
       <div class="col-sm-10">
         <label class="switch" style="margin-left: 20px"> <input type="checkbox" name="recurring" ng-model="$ctrl.model.Recurring" /><i></i> </label>
       </div>
@@ -66,15 +66,15 @@
     <!-- not-recurring -->
     <div ng-if="!$ctrl.model.Recurring">
       <div class="form-group">
-        <label for="edgejob_cron" class="col-sm-2 control-label text-left">Schedule date</label>
+        <label for="edgejob_cron" class="col-sm-2 control-label text-left">调度日期</label>
         <div class="col-sm-10">
           <input class="form-control" moment-picker ng-model="$ctrl.formValues.datetime" format="YYYY-MM-DD HH:mm" />
         </div>
-        <div class="col-sm-12 small text-muted" style="margin-top: 10px"> Time should be set according to the chosen environments' timezone. </div>
+        <div class="col-sm-12 small text-muted" style="margin-top: 10px"> 应根据所选环境的时区设置时间。 </div>
         <div ng-show="edgeJobForm.datepicker.$invalid">
           <div class="col-sm-12 small text-warning">
             <div ng-messages="edgeJobForm.datepicker.$error">
-              <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+              <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 此字段必须填写.</p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
     <!-- recurring -->
     <div ng-if="$ctrl.model.Recurring">
       <div class="form-group">
-        <label for="edgejob_value" class="col-sm-2 control-label text-left">Edge job time</label>
+        <label for="edgejob_value" class="col-sm-2 control-label text-left">边缘计算任务时间</label>
         <div class="col-sm-10">
           <select
             id="edgejob_value"
@@ -98,7 +98,7 @@
         <div ng-show="edgeJobForm.edgejob_value.$invalid">
           <div class="col-sm-12 small text-warning">
             <div ng-messages="edgeJobForm.edgejob_value.$error">
-              <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
+              <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 此字段必须填写.</p>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
   <!-- advanced-schedule -->
   <div ng-if="$ctrl.formValues.cronMethod === 'advanced'">
     <div class="form-group">
-      <label for="edgejob_cron" class="col-sm-2 control-label text-left">Cron rule</label>
+      <label for="edgejob_cron" class="col-sm-2 control-label text-left">Cron规则</label>
       <div class="col-sm-10">
         <input
           type="text"
@@ -123,13 +123,13 @@
           ng-pattern="$ctrl.cronRegex"
         />
       </div>
-      <div class="col-sm-12 small text-muted" style="margin-top: 10px"> Time should be set according to the chosen environments' timezone. </div>
+      <div class="col-sm-12 small text-muted" style="margin-top: 10px"> 应根据所选环境的时区设置时间。 </div>
     </div>
     <div class="form-group" ng-show="edgeJobForm.edgejob_cron.$invalid && edgeJobForm.edgejob_cron.$dirty">
       <div class="col-sm-12 small text-warning">
         <div ng-messages="edgeJobForm.edgejob_cron.$error">
-          <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field is required.</p>
-          <p ng-message="pattern"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This field format is invalid.</p>
+          <p ng-message="required"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 此字段必须填写.</p>
+          <p ng-message="pattern"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 该字段格式无效.</p>
         </div>
       </div>
     </div>
@@ -138,7 +138,7 @@
 
   <!-- execution-method -->
   <div ng-if="!$ctrl.model.Id">
-    <div class="col-sm-12 form-section-title"> Job content </div>
+    <div class="col-sm-12 form-section-title"> 任务内容 </div>
     <div class="form-group"></div>
     <div class="form-group" style="margin-bottom: 0">
       <div class="boxselector_wrapper">
@@ -147,9 +147,9 @@
           <label for="method_editor">
             <div class="boxselector_header">
               <i class="fa fa-edit" aria-hidden="true" style="margin-right: 2px"></i>
-              Web editor
+              Web编辑器
             </div>
-            <p>Use our Web editor</p>
+            <p>使用我们的Web编辑器</p>
           </label>
         </div>
         <div>
@@ -157,9 +157,9 @@
           <label for="method_upload">
             <div class="boxselector_header">
               <i class="fa fa-upload" aria-hidden="true" style="margin-right: 2px"></i>
-              Upload
+              上传
             </div>
-            <p>Upload from your computer</p>
+            <p>从您的计算机上传</p>
           </label>
         </div>
       </div>
@@ -168,7 +168,7 @@
   <!-- !execution-method -->
   <!-- web-editor -->
   <div ng-show="$ctrl.formValues.method === 'editor'">
-    <div class="col-sm-12 form-section-title"> Web editor </div>
+    <div class="col-sm-12 form-section-title"> Web编辑器 </div>
     <div class="form-group">
       <div class="col-sm-12">
         <code-editor
@@ -183,13 +183,13 @@
   <!-- !web-editor -->
   <!-- upload -->
   <div ng-show="$ctrl.formValues.method === 'upload'">
-    <div class="col-sm-12 form-section-title"> Upload </div>
+    <div class="col-sm-12 form-section-title"> 上传 </div>
     <div class="form-group">
-      <span class="col-sm-12 text-muted small"> You can upload a script file from your computer. </span>
+      <span class="col-sm-12 text-muted small"> 您可以从计算机上载脚本文件. </span>
     </div>
     <div class="form-group">
       <div class="col-sm-12">
-        <button type="button" class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.model.File">Select file</button>
+        <button type="button" class="btn btn-sm btn-primary" ngf-select ng-model="$ctrl.model.File">选择文件</button>
         <span style="margin-left: 5px">
           {{ $ctrl.model.File.name }}
           <i class="fa fa-times red-icon" ng-if="!$ctrl.model.File" aria-hidden="true"></i>
@@ -198,7 +198,7 @@
     </div>
   </div>
   <!-- !upload -->
-  <div class="col-sm-12 form-section-title"> Target environments </div>
+  <div class="col-sm-12 form-section-title"> 目标环境 </div>
   <!-- node-selection -->
   <associated-endpoints-selector
     endpoint-ids="$ctrl.model.Endpoints"
@@ -210,7 +210,7 @@
   ></associated-endpoints-selector>
   <!-- !node-selection -->
   <!-- actions -->
-  <div class="col-sm-12 form-section-title"> Actions </div>
+  <div class="col-sm-12 form-section-title"> 动作 </div>
   <div class="form-group">
     <div class="col-sm-12">
       <button
@@ -225,7 +225,7 @@
         button-spinner="$ctrl.actionInProgress"
       >
         <span ng-hide="$ctrl.actionInProgress">{{ $ctrl.formActionLabel }}</span>
-        <span ng-show="$ctrl.actionInProgress">In progress...</span>
+        <span ng-show="$ctrl.actionInProgress">处理中...</span>
       </button>
       <span class="text-danger" ng-if="$ctrl.state.formValidationError" style="margin-left: 5px">
         {{ $ctrl.state.formValidationError }}
