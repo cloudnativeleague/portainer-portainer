@@ -6,10 +6,10 @@ ARCHIVE_BUILD_FOLDER="/tmp/portainer-builds"
 function build_and_push_images() {
   echo "build and push images ..."
   sleep 3s
-  docker build -t "portainer/portainer:$1-${VERSION}" -f build/linux/Dockerfile .
-  docker tag "portainer/portainer:$1-${VERSION}" "portainer/portainer:$1"
-  docker push "portainer/portainer:$1-${VERSION}"
-  docker push "portainer/portainer:$1"
+  docker build -t "abelit/containerpeacock:$1-${VERSION}" -f build/linux/Dockerfile .
+  docker tag "abelit/containerpeacock:$1-${VERSION}" "abelit/containerpeacock:$1"
+  docker push "abelit/containerpeacock:$1-${VERSION}"
+  docker push "abelit/containerpeacock:$1"
 }
 
 # parameter: "platform-architecture"
@@ -20,8 +20,8 @@ function build_archive() {
   rm -rf ${BUILD_FOLDER} && mkdir -pv ${BUILD_FOLDER}/portainer
   cp -r dist/* ${BUILD_FOLDER}/portainer/
   cd ${BUILD_FOLDER}
-  tar cvpfz "portainer-${VERSION}-$1.tar.gz" portainer
-  mv "portainer-${VERSION}-$1.tar.gz" ${ARCHIVE_BUILD_FOLDER}/
+  tar cvpfz "containerpeacock-${VERSION}-$1.tar.gz" portainer
+  mv "containerpeacock-${VERSION}-$1.tar.gz" ${ARCHIVE_BUILD_FOLDER}/
   cd -
 }
 
@@ -69,7 +69,8 @@ else
     echo "build all ..."
     # build_all 'linux-amd64 linux-arm linux-arm64 linux-ppc64le linux-s390x darwin-amd64 windows-amd64'
     # build_local 'linux-arm64'
-    build_all 'linux-arm64'
+    # build_all 'linux-arm64 linux-amd64'
+    build_all 'linux-amd64'
     exit 0
   fi
 fi
