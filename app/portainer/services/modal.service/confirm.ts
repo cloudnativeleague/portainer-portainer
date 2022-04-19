@@ -17,12 +17,11 @@ interface ConfirmOptions extends ConfirmAsyncOptions {
 
 export function confirmWebEditorDiscard() {
   const options = {
-    title: 'Are you sure ?',
-    message:
-      'You currently have unsaved changes in the editor. Are you sure you want to leave?',
+    title: '确定吗？',
+    message: '您当前在编辑器中有未保存的更改。你确定要离开吗？',
     buttons: {
       confirm: {
-        label: 'Yes',
+        label: '是',
         className: 'btn-danger',
       },
     },
@@ -57,12 +56,11 @@ export function confirm(options: ConfirmOptions) {
 
 export function confirmAccessControlUpdate(callback: ConfirmCallback) {
   confirm({
-    title: 'Are you sure ?',
-    message:
-      'Changing the ownership of this resource will potentially restrict its management to some users.',
+    title: '确定吗？',
+    message: '更改此资源的所有权可能会将其管理限制为某些用户。',
     buttons: {
       confirm: {
-        label: 'Change ownership',
+        label: '改变所有者',
         className: 'btn-primary',
       },
     },
@@ -72,12 +70,11 @@ export function confirmAccessControlUpdate(callback: ConfirmCallback) {
 
 export function confirmImageForceRemoval(callback: ConfirmCallback) {
   confirm({
-    title: 'Are you sure?',
-    message:
-      'Forcing the removal of the image will remove the image even if it has multiple tags or if it is used by stopped containers.',
+    title: '确定吗？',
+    message: '强制删除镜像将删除镜像，即使它有多个标记或被停止的容器使用。',
     buttons: {
       confirm: {
-        label: 'Remove the image',
+        label: '删除镜像',
         className: 'btn-danger',
       },
     },
@@ -87,12 +84,12 @@ export function confirmImageForceRemoval(callback: ConfirmCallback) {
 
 export function cancelRegistryRepositoryAction(callback: ConfirmCallback) {
   confirm({
-    title: 'Are you sure?',
+    title: '确定吗？',
     message:
-      'WARNING: interrupting this operation before it has finished will result in the loss of all tags. Are you sure you want to do this?',
+      '警告：在操作完成之前中断此操作将导致所有标签丢失。你确定要这么做吗？',
     buttons: {
       confirm: {
-        label: 'Stop',
+        label: '停止',
         className: 'btn-danger',
       },
     },
@@ -103,11 +100,11 @@ export function cancelRegistryRepositoryAction(callback: ConfirmCallback) {
 export function confirmDeletion(message: string, callback: ConfirmCallback) {
   const messageSanitized = sanitize(message);
   confirm({
-    title: 'Are you sure ?',
+    title: '确定吗？',
     message: messageSanitized,
     buttons: {
       confirm: {
-        label: 'Remove',
+        label: '删除',
         className: 'btn-danger',
       },
     },
@@ -118,11 +115,11 @@ export function confirmDeletion(message: string, callback: ConfirmCallback) {
 export function confirmDetachment(message: string, callback: ConfirmCallback) {
   const messageSanitized = sanitize(message);
   confirm({
-    title: 'Are you sure ?',
+    title: '确定吗？',
     message: messageSanitized,
     buttons: {
       confirm: {
-        label: 'Detach',
+        label: '断开',
         className: 'btn-danger',
       },
     },
@@ -132,15 +129,15 @@ export function confirmDetachment(message: string, callback: ConfirmCallback) {
 
 export function confirmDeassociate(callback: ConfirmCallback) {
   const message =
-    '<p>De-associating this Edge environment will mark it as non associated and will clear the registered Edge ID.</p>' +
-    '<p>Any agent started with the Edge key associated to this environment will be able to re-associate with this environment.</p>' +
-    '<p>You can re-use the Edge ID and Edge key that you used to deploy the existing Edge agent to associate a new Edge device to this environment.</p>';
+    '<p>解除此边缘环境的关联会将其标记为非关联，并清除已注册的边缘ID。</p>' +
+    '<p>任何使用与此环境关联的边缘密钥启动的代理都将能够与此环境重新关联。</p>' +
+    '<p>可以重复使用用于部署现有边缘代理的边缘ID和边缘密钥，以将新的边缘设备与此环境关联。</p>';
   confirm({
-    title: 'About de-associating',
+    title: '关于解除关联',
     message: sanitize(message),
     buttons: {
       confirm: {
-        label: 'De-associate',
+        label: '解除关联',
         className: 'btn-primary',
       },
     },
@@ -152,11 +149,11 @@ export function confirmUpdate(message: string, callback: ConfirmCallback) {
   const messageSanitized = sanitize(message);
 
   confirm({
-    title: 'Are you sure ?',
+    title: '确定吗？',
     message: messageSanitized,
     buttons: {
       confirm: {
-        label: 'Update',
+        label: '更新',
         className: 'btn-warning',
       },
     },
@@ -172,11 +169,11 @@ export function confirmRedeploy(message: string, callback: ConfirmCallback) {
     message: messageSanitized,
     buttons: {
       confirm: {
-        label: 'Redeploy the applications',
+        label: '重新部署应用程序',
         className: 'btn-primary',
       },
       cancel: {
-        label: "I'll do it later",
+        label: '稍后再做',
       },
     },
     callback,
@@ -191,12 +188,11 @@ export function confirmDeletionAsync(message: string) {
 
 export function confirmEndpointSnapshot(callback: ConfirmCallback) {
   confirm({
-    title: 'Are you sure?',
-    message:
-      'Triggering a manual refresh will poll each environment to retrieve its information, this may take a few moments.',
+    title: '确定吗？',
+    message: '触发手动刷新将轮询每个环境以检索其信息，这可能需要一些时间。',
     buttons: {
       confirm: {
-        label: 'Continue',
+        label: '继续',
         className: 'btn-primary',
       },
     },
@@ -206,12 +202,11 @@ export function confirmEndpointSnapshot(callback: ConfirmCallback) {
 
 export function confirmImageExport(callback: ConfirmCallback) {
   confirm({
-    title: 'Caution',
-    message:
-      'The export may take several minutes, do not navigate away whilst the export is in progress.',
+    title: '注意',
+    message: '导出可能需要几分钟时间，在导出过程中不要离开。',
     buttons: {
       confirm: {
-        label: 'Continue',
+        label: '继续',
         className: 'btn-primary',
       },
     },

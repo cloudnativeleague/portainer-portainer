@@ -69,7 +69,7 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
               <Form className="form-horizontal" onSubmit={handleSubmit}>
                 <FormControl
                   inputId="edge_enableFDO"
-                  label="Enable FDO Management Service"
+                  label="启用FDO管理服务"
                   size="medium"
                   errors={errors.enabled}
                 >
@@ -84,8 +84,7 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
                 </FormControl>
 
                 <TextTip color="blue">
-                  When enabled, this will allow Portainer to interact with FDO
-                  Services.
+                  启用后，这将允许ContainerPeacock与FDO服务交互。
                 </TextTip>
 
                 {edgeComputeFeaturesEnabled && values.enabled && (
@@ -94,7 +93,7 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="owner_url"
-                      label="Owner Service Server"
+                      label="所有者服务服务器"
                       errors={errors.ownerURL}
                     >
                       <Field
@@ -109,7 +108,7 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="owner_username"
-                      label="Owner Service Username"
+                      label="所有者服务用户名"
                       errors={errors.ownerUsername}
                     >
                       <Field
@@ -124,7 +123,7 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="owner_password"
-                      label="Owner Service Password"
+                      label="所有者服务密码"
                       errors={errors.ownerPassword}
                     >
                       <Field
@@ -147,9 +146,9 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
                       dataCy="settings-fdoButton"
                       className={styles.saveButton}
                       isLoading={isSubmitting}
-                      loadingText="Saving settings..."
+                      loadingText="正在保存配置..."
                     >
-                      Save Settings
+                      保存配置
                     </LoadingButton>
                   </div>
                 </div>
@@ -159,10 +158,9 @@ export function SettingsFDO({ settings, onSubmit }: Props) {
 
           {edgeComputeFeaturesEnabled && isFDOEnabled && (
             <div className={styles.fdoTable}>
-              <FormSectionTitle>Device Profiles</FormSectionTitle>
+              <FormSectionTitle>设备简介</FormSectionTitle>
               <TextTip color="blue">
-                Add, Edit and Manage the list of device profiles available
-                during FDO device setup
+                添加、编辑和管理FDO设备设置期间可用的设备配置文件列表
               </TextTip>
               <FDOProfilesDatatableContainer isFDOEnabled={initialFDOEnabled} />
             </div>

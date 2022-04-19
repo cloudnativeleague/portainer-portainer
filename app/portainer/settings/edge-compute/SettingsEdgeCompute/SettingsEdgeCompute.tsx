@@ -52,7 +52,7 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
   return (
     <div className="row">
       <Widget>
-        <WidgetTitle icon="fa-laptop" title="Edge Compute settings" />
+        <WidgetTitle icon="fa-laptop" title="边缘计算设置" />
         <WidgetBody>
           <Formik
             initialValues={initialValues}
@@ -77,9 +77,9 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
               >
                 <FormControl
                   inputId="edge_checkin"
-                  label="Edge agent default poll frequency"
+                  label="边缘计算代理默认拉取设置"
                   size="medium"
-                  tooltip="Interval used by default by each Edge agent to check in with the Portainer instance. Affects Edge environment management and Edge compute features."
+                  tooltip="默认情况下，每个边缘代理用于签入ContainerPeacock实例的时间间隔。影响边缘环境管理和边缘计算功能。"
                   errors={errors.EdgeAgentCheckinInterval}
                 >
                   <Select
@@ -96,7 +96,7 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
 
                 <FormControl
                   inputId="edge_checkin"
-                  label="Enable Edge Compute features"
+                  label="启动边缘计算功能"
                   size="medium"
                   errors={errors.EnableEdgeComputeFeatures}
                 >
@@ -112,13 +112,12 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
                 </FormControl>
 
                 <TextTip color="blue">
-                  When enabled, this will enable Portainer to execute Edge
-                  Device features.
+                  启用时，这将使ContainerPeacock能够执行Edge设备功能。
                 </TextTip>
 
                 <FormControl
                   inputId="edge_enforce_id"
-                  label="Enforce environment ID"
+                  label="强制执行环境ID"
                   size="medium"
                   errors={errors.EnforceEdgeID}
                 >
@@ -135,7 +134,7 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
 
                 <FormControl
                   inputId="edge_tofc"
-                  label="Trust on first connect"
+                  label="信任首次连接"
                   size="medium"
                   errors={errors.DisableTrustOnFirstConnect}
                 >
@@ -157,9 +156,9 @@ export function SettingsEdgeCompute({ settings, onSubmit }: Props) {
                       dataCy="settings-edgeComputeButton"
                       className={styles.saveButton}
                       isLoading={isSubmitting}
-                      loadingText="Saving settings..."
+                      loadingText="正在保存配置..."
                     >
-                      Save Settings
+                      保存设置
                     </LoadingButton>
                   </div>
                 </div>

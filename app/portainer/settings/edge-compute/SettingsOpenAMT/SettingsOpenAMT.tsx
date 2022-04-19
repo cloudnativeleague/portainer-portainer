@@ -56,7 +56,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
         resolve(cert);
       };
       fileReader.onerror = () => {
-        reject(new Error('error reading provisioning certificate file'));
+        reject(new Error('读取设置证书文件时出错'));
       };
       fileReader.readAsDataURL(file);
     });
@@ -115,7 +115,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
               <Form className="form-horizontal" onSubmit={handleSubmit}>
                 <FormControl
                   inputId="edge_enableOpenAMT"
-                  label="Enable OpenAMT"
+                  label="启用OpenAMT"
                   errors={errors.enabled}
                 >
                   <Switch
@@ -129,8 +129,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
                 </FormControl>
 
                 <TextTip color="blue">
-                  When enabled, this will allow Portainer to interact with an
-                  OpenAMT MPS API.
+                  启用后，这将允许ContainerPeacock与OpenAMT MPS API交互。
                 </TextTip>
 
                 {edgeComputeFeaturesEnabled && values.enabled && (
@@ -147,7 +146,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
                         as={Input}
                         name="mpsServer"
                         id="mps_server"
-                        placeholder="Enter the MPS Server"
+                        placeholder="输入MPS Server"
                         value={values.mpsServer}
                         data-cy="openAMT-serverInput"
                       />
@@ -155,7 +154,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="mps_username"
-                      label="MPS User"
+                      label="MPS用户"
                       size="medium"
                       errors={errors.mpsUser}
                     >
@@ -163,7 +162,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
                         as={Input}
                         name="mpsUser"
                         id="mps_username"
-                        placeholder="Enter the MPS User"
+                        placeholder="输入MPS用户"
                         value={values.mpsUser}
                         data-cy="openAMT-usernameInput"
                       />
@@ -171,9 +170,9 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="mps_password"
-                      label="MPS Password"
+                      label="MPS密码"
                       size="medium"
-                      tooltip="Needs to be 8-32 characters including one uppercase, one lowercase letters, one base-10 digit and one special character."
+                      tooltip="需要8-32个字符，包括一个大写字母、一个小写字母、一个以10为基数的数字和一个特殊字符。"
                       errors={errors.mpsPassword}
                     >
                       <Field
@@ -181,7 +180,7 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
                         type="password"
                         name="mpsPassword"
                         id="mps_password"
-                        placeholder="Enter the MPS Password"
+                        placeholder="输入MPS密码"
                         value={values.mpsPassword}
                         data-cy="openAMT-passwordInput"
                       />
@@ -191,16 +190,16 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="domain_name"
-                      label="Domain Name"
+                      label="域名"
                       size="medium"
-                      tooltip="Enter the FQDN that is associated with the provisioning certificate (i.e amtdomain.com)"
+                      tooltip="输入与设置证书（即amtdomain.com）关联的FQDN"
                       errors={errors.domainName}
                     >
                       <Field
                         as={Input}
                         name="domainName"
                         id="domain_name"
-                        placeholder="Enter the Domain Name"
+                        placeholder="输入域名"
                         value={values.domainName}
                         data-cy="openAMT-domainInput"
                       />
@@ -208,13 +207,13 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="certificate_file"
-                      label="Provisioning Certificate File (.pfx)"
+                      label="设置证书文件（.pfx）"
                       size="medium"
-                      tooltip="Supported CAs are Comodo, DigiCert, Entrust and GoDaddy.<br>The certificate must contain the private key.<br>On AMT 15 based devices you need to use SHA2."
+                      tooltip="支持的CA包括Comodo、DigiCert、Trust和GoDaddy<br>证书必须包含私钥<br>在基于AMT 15的设备上，您需要使用SHA2。"
                       errors={errors.certFileContent}
                     >
                       <FileUploadField
-                        title="Upload file"
+                        title="上传文件"
                         accept=".pfx"
                         value={certFile}
                         onChange={(file) =>
@@ -225,9 +224,9 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
 
                     <FormControl
                       inputId="certificate_password"
-                      label="Provisioning Certificate Password"
+                      label="设置证书密码"
                       size="medium"
-                      tooltip="Needs to be 8-32 characters including one uppercase, one lowercase letters, one base-10 digit and one special character."
+                      tooltip="需要8-32个字符，包括一个大写字母、一个小写字母、一个以10为基数的数字和一个特殊字符。"
                       errors={errors.certFilePassword}
                     >
                       <Field
@@ -250,9 +249,9 @@ export function SettingsOpenAMT({ settings, onSubmit }: Props) {
                       dataCy="settings-fdoButton"
                       className={styles.saveButton}
                       isLoading={isSubmitting}
-                      loadingText="Saving settings..."
+                      loadingText="正在保存配置..."
                     >
-                      Save Settings
+                      保存设置
                     </LoadingButton>
                   </div>
                 </div>
